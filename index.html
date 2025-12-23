@@ -67,6 +67,17 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
             font-size: 1.8rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -374,6 +385,14 @@
                 display: none;
             }
 
+            .logo-text {
+                display: none;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+
             .philosophy-grid,
             .services-grid {
                 grid-template-columns: 1fr;
@@ -390,7 +409,10 @@
         <!-- Header -->
         <header>
             <nav>
-                <div class="logo">Web Three Innovations</div>
+                <div class="logo">
+                    <img src="Web Three Innovations logo-D1.png" alt="Web Three Innovations Logo">
+                    <span class="logo-text">Web Three Innovations</span>
+                </div>
                 <ul class="nav-links">
                     <li><a href="#philosophy">Philosophy</a></li>
                     <li><a href="#approach">Approach</a></li>
