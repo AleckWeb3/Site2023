@@ -3,65 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Apex AI — Top-of-funnel sales automation that researches target companies, qualifies them, prepares approved outreach, handles replies, and delivers qualified leads.">
-    <title>Apex AI | Sales Outreach Automation | Web Three Innovations</title>
+    <meta name="description" content="Apex AI — Top-of-funnel sales automation that researches target companies, qualifies them with your rules, prepares approved outreach, handles replies, and delivers qualified leads.">
+    <title>Apex AI | Sales Automation | Web Three Innovations</title>
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        :root { --primary-color:#00d4ff; --secondary-color:#0066ff; --accent-color:#ff00ff; --text-color:#ffffff; --dark-bg:#0a0a1a; --card-bg:rgba(15,15,35,0.85); }
-        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:var(--dark-bg); color:var(--text-color); overflow-x:hidden; line-height:1.6; min-height:100vh; }
-        #stars-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; background:linear-gradient(135deg,#0a0a1a 0%,#1a0a2e 50%,#0a0a1a 100%); }
-        .content { position:relative; z-index:1; }
-        header { padding:1.5rem 5%; backdrop-filter:blur(10px); background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(0,212,255,0.3); }
-        nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
-        .logo img { height:150px; width:auto; }
-        .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
-        .nav-links a { color:#1a1a2e; text-decoration:none; font-weight:500; transition:color 0.3s; position:relative; }
-        .nav-links a:hover { color:var(--primary-color); }
-        .nav-links > li > a::after { content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:var(--primary-color); transition:width 0.3s; }
-        .nav-links > li > a:hover::after { width:100%; }
-        .dropdown { position:relative; }
-        .dropdown-toggle { cursor:pointer; display:flex; align-items:center; gap:0.3rem; color:#1a1a2e; font-weight:500; }
-        .dropdown-arrow { font-size:0.7rem; transition:transform 0.3s; }
-        .dropdown:hover .dropdown-arrow { transform:rotate(180deg); }
-        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(10px); background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:10px; padding:0.5rem 0; min-width:200px; opacity:0; visibility:hidden; transition:all 0.3s; list-style:none; z-index:101; }
-        .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(5px); }
-        .dropdown-menu li { padding:0; }
-        .dropdown-menu a { display:block; padding:0.7rem 1.5rem; color:var(--text-color); text-decoration:none; font-weight:500; transition:all 0.3s; white-space:nowrap; }
-        .dropdown-menu a:hover { background:rgba(0,212,255,0.1); color:var(--primary-color); }
-        .dropdown-menu a::after { display:none; }
-        .cta-button { padding:0.8rem 2rem; background:linear-gradient(135deg,var(--primary-color),var(--secondary-color)); color:white; border:none; border-radius:50px; font-weight:600; cursor:pointer; transition:transform 0.3s; text-decoration:none; display:inline-block; }
-        .cta-button:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
-        .cta-secondary { padding:0.8rem 2rem; background:transparent; color:var(--primary-color); border:2px solid var(--primary-color); border-radius:50px; font-weight:600; text-decoration:none; display:inline-block; }
-        .cta-secondary:hover { background:rgba(0,212,255,0.1); }
-        .page-hero { min-height:40vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; }
-        .page-hero h1 { font-size:3rem; margin-bottom:1rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .page-hero p { font-size:1.2rem; color:rgba(255,255,255,0.8); max-width:700px; }
-        .tag { display:inline-block; padding:0.3rem 0.8rem; background:rgba(0,212,255,0.15); border:1px solid rgba(0,212,255,0.3); border-radius:20px; font-size:0.8rem; color:var(--primary-color); margin-bottom:1rem; }
-        .section { padding:4rem 5%; max-width:1100px; margin:0 auto; }
-        .section h2 { font-size:2rem; margin-bottom:1.5rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .section h3 { font-size:1.3rem; color:var(--primary-color); margin-bottom:0.8rem; }
-        .section p, .section li { color:rgba(255,255,255,0.75); line-height:1.8; font-size:1.05rem; margin-bottom:1rem; }
-        .section ul { padding-left:1.5rem; margin-bottom:1.5rem; }
-        .section li { margin-bottom:0.5rem; }
-        .grid-2 { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; margin-top:2rem; }
-        .info-card { background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:2rem; }
-        .info-card h4 { color:var(--secondary-color); margin-bottom:0.8rem; font-size:1.1rem; }
-        .info-card p { color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.7; }
-        .workflow-step { background:var(--card-bg); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:1.5rem 2rem; margin-bottom:1rem; display:flex; gap:1.5rem; align-items:flex-start; }
-        .workflow-step .step-num { font-size:2rem; font-weight:700; color:var(--primary-color); min-width:40px; }
-        .workflow-step h4 { color:var(--text-color); margin-bottom:0.3rem; }
-        .workflow-step p { color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.6; margin-bottom:0; }
-        .limitations { background:linear-gradient(180deg,transparent 0%,rgba(0,212,255,0.05) 50%,transparent 100%); }
-        .cta-section { padding:5rem 5%; text-align:center; }
-        .cta-section h2 { font-size:2.2rem; margin-bottom:1rem; }
-        .cta-section p { font-size:1.1rem; margin-bottom:2rem; color:rgba(255,255,255,0.8); }
-        footer { padding:3rem 5%; background:var(--card-bg); backdrop-filter:blur(10px); border-top:1px solid rgba(0,212,255,0.1); }
-        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
-        .footer-col h4 { color:var(--primary-color); margin-bottom:1rem; font-size:1rem; }
-        .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; }
-        .footer-col a:hover { color:var(--primary-color); }
-        .footer-bottom { text-align:center; color:rgba(255,255,255,0.4); font-size:0.85rem; max-width:1200px; margin:0 auto; }
-        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } .grid-2 { grid-template-columns:1fr; } .workflow-step { flex-direction:column; } }
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#050508;--surface:#0e0e14;--surface-hover:#16161f;--border:#1a1a26;--border-hover:#2a2a3a;--text:#c8c8d4;--text-dim:#6b6b7a;--text-bright:#e8e8f0}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+        #stars-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
+        .content{position:relative;z-index:1}
+        header{padding:1.5rem 5%;background:rgba(5,5,8,0.85);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+        nav{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto}
+        .logo img{height:120px;width:auto;filter:brightness(0.95)}
+        .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+        .nav-links a,.dropdown-toggle{color:var(--text-dim);text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.02em;transition:color .3s;text-transform:uppercase;cursor:pointer}
+        .nav-links a:hover,.dropdown-toggle:hover{color:var(--text-bright)}
+        .dropdown{position:relative}.dropdown-arrow{font-size:.6rem;transition:transform .3s;opacity:.5}.dropdown:hover .dropdown-arrow{transform:rotate(180deg);opacity:1}
+        .dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(12px);background:rgba(14,14,20,.97);border:1px solid var(--border);border-radius:8px;padding:.4rem 0;min-width:180px;opacity:0;visibility:hidden;transition:all .25s;list-style:none;z-index:101}
+        .dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(6px)}
+        .dropdown-menu a{display:block;padding:.65rem 1.4rem;color:var(--text-dim);text-decoration:none;font-weight:400;font-size:.85rem;text-transform:none;letter-spacing:0}
+        .dropdown-menu a:hover{background:rgba(255,255,255,.04);color:var(--text-bright)}
+        .btn{padding:.7rem 1.8rem;background:var(--surface);color:var(--text-bright);border:1px solid var(--border);border-radius:6px;font-weight:500;font-size:.85rem;letter-spacing:.03em;text-decoration:none;display:inline-block;text-transform:uppercase;transition:all .3s}
+        .btn:hover{border-color:var(--border-hover);background:var(--surface-hover)}
+        .hero{padding:5rem 5% 3rem;text-align:center;position:relative}
+        .hero .tag{display:inline-block;padding:.25rem .7rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:4px;font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.5rem}
+        .hero h1{font-size:3rem;color:var(--text-bright);font-weight:300;letter-spacing:-.02em;margin-bottom:1rem}
+        .hero p{font-size:1.1rem;color:var(--text-dim);max-width:650px;margin:0 auto}
+        .flow-section{padding:4rem 5%;max-width:1200px;margin:0 auto}
+        .flow-section h2{font-size:1.8rem;color:var(--text-bright);font-weight:300;margin-bottom:.5rem}
+        .flow-section .desc{color:var(--text-dim);margin-bottom:2.5rem;font-size:.95rem;line-height:1.7}
+        .flow-track{display:flex;gap:.75rem;overflow-x:auto;padding-bottom:1rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+        .flow-step{flex:0 0 280px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.8rem;position:relative;transition:all .3s}
+        .flow-step:hover{border-color:var(--border-hover);background:var(--surface-hover)}
+        .flow-step .step-marker{font-size:.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+        .flow-step .step-marker::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--border);display:inline-block}
+        .flow-step h4{color:var(--text-bright);font-weight:500;font-size:1rem;margin-bottom:.5rem}
+        .flow-step p{color:var(--text-dim);font-size:.85rem;line-height:1.65}
+        .flow-connector{display:flex;align-items:center;justify-content:center;flex:0 0 30px;color:var(--border);font-size:1.2rem}
+        .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+        .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+        .info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.8rem;transition:all .3s}
+        .info-card:hover{border-color:var(--border-hover);background:var(--surface-hover)}
+        .info-card h4{color:var(--text-bright);font-weight:500;font-size:1rem;margin-bottom:.5rem}
+        .info-card p,.info-card li{color:var(--text-dim);font-size:.85rem;line-height:1.65}
+        .info-card ul{padding-left:1.2rem;margin-top:.5rem}
+        .info-card li{margin-bottom:.3rem}
+        .section-divider{text-align:center;padding:1rem 0}
+        .section-divider svg{width:60px;height:2px;opacity:.2}
+        .cta-section{padding:5rem 5%;text-align:center}
+        .cta-section h2{font-size:2rem;color:var(--text-bright);font-weight:300;margin-bottom:.5rem}
+        .cta-section p{color:var(--text-dim);margin-bottom:2rem}
+        footer{padding:3rem 5%;background:var(--surface);border-top:1px solid var(--border)}
+        .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;max-width:1200px;margin:0 auto 2rem}
+        .footer-col h4{color:var(--text-dim);margin-bottom:1rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em}
+        .footer-col a{display:block;color:rgba(255,255,255,.3);text-decoration:none;padding:.25rem 0;font-size:.85rem}
+        .footer-col a:hover{color:var(--text-bright)}
+        .footer-bottom{text-align:center;color:rgba(255,255,255,.15);font-size:.75rem;max-width:1200px;margin:0 auto}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @media(max-width:768px){.hero h1{font-size:2rem}.nav-links{display:none}.logo img{height:70px}.grid-2,.grid-3{grid-template-columns:1fr}.flow-track{flex-direction:column}.flow-connector{display:none}}
     </style>
 </head>
 <body>
@@ -69,108 +67,102 @@
     <div class="content">
         <header>
             <nav>
-                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations Logo"></a></div>
+                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="W3I"></a></div>
                 <ul class="nav-links">
-                    <li class="dropdown">
-                        <span class="dropdown-toggle">Products <span class="dropdown-arrow">▼</span></span>
-                        <ul class="dropdown-menu">
-                            <li><a href="apex-ai.html">Apex AI</a></li>
-                            <li><a href="exagent.html">Exagent</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li class="dropdown"><span class="dropdown-toggle">Products <span class="dropdown-arrow">▾</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="exagent.html">Exagent</a></li></ul></li>
+                    <li><a href="index.html#about">Approach</a></li><li><a href="index.html#faq">FAQ</a></li>
                 </ul>
-                <a href="contact.html" class="cta-button">Contact Us</a>
+                <a href="contact.html" class="btn">Contact</a>
             </nav>
         </header>
 
-        <section class="page-hero">
-            <div>
-                <span class="tag">Sales Automation</span>
-                <h1>Apex AI</h1>
-                <p>A top-of-funnel sales automation workspace that researches target companies, qualifies them, prepares approved outreach, handles replies, and delivers qualified leads — all under your control.</p>
+        <section class="hero">
+            <span class="tag">Sales Automation</span>
+            <h1>Apex AI</h1>
+            <p>Top-of-funnel sales automation that researches target companies, qualifies them against your rules, prepares approved outreach, handles replies, and delivers qualified leads — all under your control.</p>
+        </section>
+
+        <section class="flow-section">
+            <h2>How it works</h2>
+            <p class="desc">Eight stages from target company to qualified lead handoff. One continuous, controlled workflow.</p>
+            <div class="flow-track">
+                <div class="flow-step"><div class="step-marker">01 Setup</div><h4>Sales Plan Configuration</h4><p>Define company and offer, target rules, buyer roles, Message guidance, follow-up plans, email connection, sending limits, and lead handoff — once per campaign.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-marker">02 Input</div><h4>Add Target Companies</h4><p>Add one company, upload a list, or let Apex find targets under your active sales plan.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-marker">03 Research</div><h4>Company Fit Analysis</h4><p>Research each company, record sources, and apply your Company Fit rules. Dimensions, weights, thresholds, and hard exclusions — deterministic scoring.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-marker">04 Contact</div><h4>Contact Discovery</h4><p>Find one current contact in an approved role with valid email. If unverifiable, try another role within limits or defer the company.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-marker">05 Message</div><h4>Outreach Preparation</h4><p>Prepare first and follow-up messages under your sales plan. Edit any message or request a new version. Only true exceptions need your review.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-marker">06 Launch</div><h4>Approve & Start</h4><p>One approval activates the complete plan. Outreach runs through Microsoft 365 or Classic Outlook with independent sending controls, schedules, and limits.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-marker">07 Reply</div><h4>Handle Replies</h4><p>Classify replies, handle opt-outs, stop follow-up after response. Never chase someone who already engaged.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-marker">08 Deliver</div><h4>Qualified Lead Handoff</h4><p>Download CSV or JSON and import into your sales system. Your reps receive leads — they don't use Apex.</p></div>
             </div>
         </section>
 
-        <section class="section">
-            <h2>What Apex AI Does</h2>
-            <p>Apex AI turns target companies into qualified leads through one continuous, controlled workflow. Instead of manually researching companies, finding contacts, drafting outreach, tracking replies, and handing off leads — you define the rules once and Apex handles the routine work while you stay in control.</p>
-            <div class="grid-2">
-                <div class="info-card"><h4>🎯 Company Research & Fit</h4><p>Researches target companies and applies your custom Company Fit rules — dimensions, evidence requirements, weights, thresholds, and hard exclusions. The AI explains evidence but cannot change the fit score.</p></div>
-                <div class="info-card"><h4>👤 Contact Discovery</h4><p>Finds one current, suitable contact in an approved buyer role with a valid business email. If it can't verify a suitable person, Apex tries another approved role or defers the company.</p></div>
-                <div class="info-card"><h4>✉️ Outreach Preparation</h4><p>Prepares first and follow-up messages under your approved sales plan and Message guidance. You can edit any message or request a new version. Normal work doesn't require repeated approval.</p></div>
-                <div class="info-card"><h4>📬 Reply Handling</h4><p>Checks replies, classifies useful reply types, handles opt-outs and do-not-contact requests, and stops follow-up after a reply — so you never chase someone who already responded.</p></div>
-                <div class="info-card"><h4>✅ Qualified Lead Delivery</h4><p>Prepares qualified leads for human distribution. You download a CSV or JSON file and import it into your existing sales system. Apex does not route leads among your reps.</p></div>
-                <div class="info-card"><h4>🛡️ Full Control</h4><p>You approve the complete sales plan once, then pause or stop outreach anytime. Material changes need your review. Independent sending controls, schedules, limits, and suppression rules stay in force.</p></div>
-            </div>
-        </section>
+        <div class="section-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width=".5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity=".5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width=".5"/></svg></div>
 
-        <section class="section" style="background:linear-gradient(180deg,transparent 0%,rgba(0,212,255,0.05) 50%,transparent 100%);">
-            <h2>How It Works</h2>
-            <p style="margin-bottom:2rem;">The dashboard has six areas: Overview, Accounts, Outreach, Inbox, Qualified Leads, and Settings. Overview tracks eight stages from target company to qualified lead handoff.</p>
-            <div class="workflow-step"><div class="step-num">1</div><div><h4>Set Up Your Sales Plan</h4><p>Define your company and offer, target rules, exclusions, buyer roles, Message guidance, sample messages, follow-up plans, email connection, sending days and limits, and qualified-lead handoff. This is done once per campaign — not per company.</p></div></div>
-            <div class="workflow-step"><div class="step-num">2</div><div><h4>Add Target Companies</h4><p>Add one company, upload a target-company list, or use targets Apex finds under your active sales plan.</p></div></div>
-            <div class="workflow-step"><div class="step-num">3</div><div><h4>Research & Company Fit</h4><p>Apex researches each company, records its sources, and applies your Company Fit method. Missing, stale, or conflicting evidence produces defined results — the AI never silently changes the score.</p></div></div>
-            <div class="workflow-step"><div class="step-num">4</div><div><h4>Find Contacts</h4><p>Apex looks for one current contact in an approved buyer role with a valid business email. If it can't verify a suitable person, it tries another approved role within your limit or defers the company.</p></div></div>
-            <div class="workflow-step"><div class="step-num">5</div><div><h4>Prepare & Approve Messages</h4><p>Apex prepares first and follow-up messages under your sales plan and Message guidance. You can edit any message or request a new version. Only true exceptions need your review.</p></div></div>
-            <div class="workflow-step"><div class="step-num">6</div><div><h4>Approve & Start Outreach</h4><p>Use "Approve and start outreach" once to activate the complete plan. Outreach runs through Microsoft 365 or Classic Outlook with independent sending controls, schedules, limits, pause, stop, and suppression rules.</p></div></div>
-            <div class="workflow-step"><div class="step-num">7</div><div><h4>Handle Replies</h4><p>Apex checks replies, classifies useful reply types, handles opt-outs and do-not-contact requests, and stops follow-up after a reply.</p></div></div>
-            <div class="workflow-step"><div class="step-num">8</div><div><h4>Receive Qualified Leads</h4><p>Apex prepares qualified leads. You download a CSV or JSON file and import it into your sales system. Your sales reps receive leads — they don't use Apex.</p></div></div>
-        </section>
-
-        <section class="section limitations">
-            <h2>What Apex AI Is — And Isn't</h2>
+        <section class="flow-section">
+            <h2>Capabilities</h2>
+            <p class="desc">What Apex AI can and cannot do — transparently.</p>
             <div class="grid-2">
                 <div class="info-card">
-                    <h4>Apex AI Is</h4>
+                    <h4>Capabilities</h4>
                     <ul>
-                        <li>A top-of-funnel automation workspace for a Sales Director or program owner</li>
-                        <li>One continuous workflow from target company to qualified-lead handoff</li>
-                        <li>Controlled by you — one approved sales plan, with pause/stop anytime</li>
-                        <li>Built with isolated client environments and audited access</li>
-                        <li>Integrated with Microsoft 365 and Classic Outlook email</li>
+                        <li>Research and qualify target companies with custom rules</li>
+                        <li>Find contacts in approved buyer roles</li>
+                        <li>Prepare approved outreach messages</li>
+                        <li>Handle replies and stop follow-up after response</li>
+                        <li>Deliver qualified leads via CSV/JSON export</li>
+                        <li>Full audit trail on every AI action and human decision</li>
+                        <li>Isolated client environments with encrypted access</li>
                     </ul>
                 </div>
                 <div class="info-card">
-                    <h4>Apex AI Is Not</h4>
+                    <h4>Limitations</h4>
                     <ul>
-                        <li>A full CRM or pipeline management tool</li>
-                        <li>A tool that sells to or replies to prospects</li>
-                        <li>A lead routing system for sales representatives</li>
-                        <li>A dashboard used by everyday sales reps</li>
-                        <li>A direct integration with HubSpot or other CRMs (currently)</li>
-                        <li>A document review or data extraction tool</li>
+                        <li>Not a CRM or pipeline management tool</li>
+                        <li>Does not sell to or reply to prospects</li>
+                        <li>No direct HubSpot or CRM integration (currently)</li>
+                        <li>Sales reps do not use the dashboard</li>
+                        <li>Does not route leads among representatives</li>
+                        <li>Live sending requires controlled trial approval</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2>Trust & Architecture</h2>
-            <div class="grid-2">
-                <div class="info-card"><h4>🔐 Isolated Environments</h4><p>Each client has its own application service, database, secrets, files, jobs, caches, logs, and audit trail. No cross-client data access.</p></div>
-                <div class="info-card"><h4>👤 Controlled Access</h4><p>Separate platform and client sessions. Named client accounts, encrypted connection keys, and audited support entry. Platform roles: Owner, Administrator, and Observer. Observers cannot enter client environments.</p></div>
-                <div class="info-card"><h4>📝 Audit Trail</h4><p>Platform audit events, tenant-local audit trails, and audited staff entry. Records for access grants, revocations, sensitive activity, lifecycle actions, and sales-development events.</p></div>
-                <div class="info-card"><h4>🛡️ Data Controls</h4><p>Retention, suppression, privacy, and legal-hold controls. Critical authorization, review, and audit evidence is protected from normal deletion.</p></div>
+        <div class="section-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width=".5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity=".5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width=".5"/></svg></div>
+
+        <section class="flow-section">
+            <h2>Architecture</h2>
+            <p class="desc">Built for trust and isolation.</p>
+            <div class="grid-3">
+                <div class="info-card"><h4>Isolated Environments</h4><p>Each client has a dedicated application service, database, secrets vault, jobs, caches, logs, and audit trail.</p></div>
+                <div class="info-card"><h4>Controlled Access</h4><p>Separate platform and client sessions. Platform roles: Owner, Administrator, Observer. Observers cannot enter client environments.</p></div>
+                <div class="info-card"><h4>Audit Trail</h4><p>Records for access grants, revocations, sensitive activity, lifecycle actions, and sales-development events. Critical evidence protected from normal deletion.</p></div>
             </div>
         </section>
 
         <section class="cta-section">
             <h2>Interested in Apex AI?</h2>
             <p>Built for Sales Directors and program owners who want controlled top-of-funnel automation.</p>
-            <a href="contact.html" class="cta-button">Contact Us</a>
+            <a href="contact.html" class="btn">Get In Touch</a>
         </section>
 
         <footer>
             <div class="footer-grid">
                 <div class="footer-col"><h4>Products</h4><a href="apex-ai.html">Apex AI</a><a href="exagent.html">Exagent</a></div>
                 <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-                <div class="footer-col"><h4>Resources</h4><a href="security.html">Security</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+                <div class="footer-col"><h4>Resources</h4><a href="security.html">Security</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
             </div>
             <div class="footer-bottom"><p>&copy; 2026 Web Three Innovations. All Rights Reserved.</p></div>
         </footer>
     </div>
-    <script>const c=document.getElementById('stars-canvas'),ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;class S{constructor(){this.reset();this.y=Math.random()*c.height}reset(){this.x=Math.random()*c.width;this.y=-10;this.size=Math.random()*2+0.5;this.speed=Math.random()*0.5+0.2;this.opacity=Math.random()*0.5+0.5;this.color=Math.random()>0.5?'#00d4ff':'#ffffff'}update(){if(this.y>c.height)this.reset();this.y+=this.speed}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.opacity;ctx.fill();ctx.globalAlpha=1;ctx.beginPath();ctx.moveTo(this.x,this.pastY||this.y-this.speed);ctx.lineTo(this.x,this.y);ctx.strokeStyle=this.color;ctx.globalAlpha=this.opacity*0.3;ctx.lineWidth=this.size;ctx.stroke();ctx.globalAlpha=1}}class C{constructor(a,b){this.a=a;this.b=b}draw(){let d=Math.hypot(this.a.x-this.b.x,this.a.y-this.b.y);if(d<150){ctx.beginPath();ctx.moveTo(this.a.x,this.a.y);ctx.lineTo(this.b.x,this.b.y);ctx.strokeStyle='#00d4ff';ctx.globalAlpha=(1-d/150)*0.2;ctx.lineWidth=0.5;ctx.stroke();ctx.globalAlpha=1}}}let s=[];for(let i=0;i<150;i++)s.push(new S());(function A(){ctx.fillStyle='rgba(10,10,26,0.1)';ctx.fillRect(0,0,c.width,c.height);s.forEach(t=>{t.pastY=t.y;t.update();t.draw()});for(let i=0;i<s.length;i++)for(let j=i+1;j<s.length;j++)new C(s[i],s[j]).draw();requestAnimationFrame(A)})();window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight});</script>
+    <script>const c=document.getElementById('stars-canvas'),ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;let S=[];for(let i=0;i<200;i++)S.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*.8+.2,o:Math.random()*.4+.1,s:Math.random()*.15+.03});function A(){ctx.fillStyle='rgba(5,5,8,.15)';ctx.fillRect(0,0,c.width,c.height);S.forEach(s=>{s.y+=s.s;if(s.y>c.height){s.y=0;s.x=Math.random()*c.width}ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(180,190,210,${s.o})`;ctx.fill()});requestAnimationFrame(A)}A();window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight});</script>
 </body>
 </html>

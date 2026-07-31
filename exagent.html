@@ -4,64 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Exagent — A private command center where groups deploy, control, and verify LLM trading agents across prediction markets, perpetual futures, spot markets, and EVM DEXs.">
-    <title>Exagent | LLM Trading Agent Command Center | Web Three Innovations</title>
+    <title>Exagent | Trading Agent Command Center | Web Three Innovations</title>
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        :root { --primary-color:#00d4ff; --secondary-color:#0066ff; --accent-color:#ff00ff; --text-color:#ffffff; --dark-bg:#0a0a1a; --card-bg:rgba(15,15,35,0.85); }
-        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:var(--dark-bg); color:var(--text-color); overflow-x:hidden; line-height:1.6; min-height:100vh; }
-        #stars-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; background:linear-gradient(135deg,#0a0a1a 0%,#1a0a2e 50%,#0a0a1a 100%); }
-        .content { position:relative; z-index:1; }
-        header { padding:1.5rem 5%; backdrop-filter:blur(10px); background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(0,212,255,0.3); }
-        nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
-        .logo img { height:150px; width:auto; }
-        .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
-        .nav-links a { color:#1a1a2e; text-decoration:none; font-weight:500; transition:color 0.3s; position:relative; }
-        .nav-links a:hover { color:var(--primary-color); }
-        .nav-links > li > a::after { content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:var(--primary-color); transition:width 0.3s; }
-        .nav-links > li > a:hover::after { width:100%; }
-        .dropdown { position:relative; }
-        .dropdown-toggle { cursor:pointer; display:flex; align-items:center; gap:0.3rem; color:#1a1a2e; font-weight:500; }
-        .dropdown-arrow { font-size:0.7rem; transition:transform 0.3s; }
-        .dropdown:hover .dropdown-arrow { transform:rotate(180deg); }
-        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(10px); background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:10px; padding:0.5rem 0; min-width:200px; opacity:0; visibility:hidden; transition:all 0.3s; list-style:none; z-index:101; }
-        .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(5px); }
-        .dropdown-menu li { padding:0; }
-        .dropdown-menu a { display:block; padding:0.7rem 1.5rem; color:var(--text-color); text-decoration:none; font-weight:500; transition:all 0.3s; white-space:nowrap; }
-        .dropdown-menu a:hover { background:rgba(0,212,255,0.1); color:var(--primary-color); }
-        .dropdown-menu a::after { display:none; }
-        .cta-button { padding:0.8rem 2rem; background:linear-gradient(135deg,var(--primary-color),var(--secondary-color)); color:white; border:none; border-radius:50px; font-weight:600; cursor:pointer; transition:transform 0.3s; text-decoration:none; display:inline-block; }
-        .cta-button:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
-        .page-hero { min-height:40vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; }
-        .page-hero h1 { font-size:3rem; margin-bottom:1rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .page-hero p { font-size:1.2rem; color:rgba(255,255,255,0.8); max-width:700px; }
-        .tag { display:inline-block; padding:0.3rem 0.8rem; background:rgba(0,212,255,0.15); border:1px solid rgba(0,212,255,0.3); border-radius:20px; font-size:0.8rem; color:var(--primary-color); margin-bottom:1rem; }
-        .section { padding:4rem 5%; max-width:1100px; margin:0 auto; }
-        .section h2 { font-size:2rem; margin-bottom:1.5rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .section h3 { font-size:1.3rem; color:var(--primary-color); margin-bottom:0.8rem; }
-        .section p, .section li { color:rgba(255,255,255,0.75); line-height:1.8; font-size:1.05rem; margin-bottom:1rem; }
-        .section ul { padding-left:1.5rem; margin-bottom:1.5rem; }
-        .section li { margin-bottom:0.5rem; }
-        .grid-2 { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; margin-top:2rem; }
-        .info-card { background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:2rem; }
-        .info-card h4 { color:var(--secondary-color); margin-bottom:0.8rem; font-size:1.1rem; }
-        .info-card p { color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.7; }
-        .workflow-step { background:var(--card-bg); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:1.5rem 2rem; margin-bottom:1rem; display:flex; gap:1.5rem; align-items:flex-start; }
-        .workflow-step .step-num { font-size:2rem; font-weight:700; color:var(--primary-color); min-width:40px; }
-        .workflow-step h4 { color:var(--text-color); margin-bottom:0.3rem; }
-        .workflow-step p { color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.6; margin-bottom:0; }
-        .limitations { background:linear-gradient(180deg,transparent 0%,rgba(0,212,255,0.05) 50%,transparent 100%); }
-        .cta-section { padding:5rem 5%; text-align:center; }
-        .cta-section h2 { font-size:2.2rem; margin-bottom:1rem; }
-        .cta-section p { font-size:1.1rem; margin-bottom:2rem; color:rgba(255,255,255,0.8); }
-        .venue-tag { display:inline-block; padding:0.2rem 0.6rem; background:rgba(0,102,255,0.15); border:1px solid rgba(0,102,255,0.3); border-radius:12px; font-size:0.75rem; color:var(--secondary-color); margin:0.2rem; }
-        .llm-tag { display:inline-block; padding:0.2rem 0.6rem; background:rgba(255,0,255,0.1); border:1px solid rgba(255,0,255,0.2); border-radius:12px; font-size:0.75rem; color:var(--accent-color); margin:0.2rem; }
-        footer { padding:3rem 5%; background:var(--card-bg); backdrop-filter:blur(10px); border-top:1px solid rgba(0,212,255,0.1); }
-        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
-        .footer-col h4 { color:var(--primary-color); margin-bottom:1rem; font-size:1rem; }
-        .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; }
-        .footer-col a:hover { color:var(--primary-color); }
-        .footer-bottom { text-align:center; color:rgba(255,255,255,0.4); font-size:0.85rem; max-width:1200px; margin:0 auto; }
-        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } .grid-2 { grid-template-columns:1fr; } .workflow-step { flex-direction:column; } }
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#050508;--surface:#0a0a10;--surface-hover:#11111a;--border:#1a1a28;--border-hover:#252538;--text:#c8c8d4;--text-dim:#6b6b7a;--text-bright:#e8e8f0;--green:#4a6b5a;--green-bright:#6b9a7e}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+        #stars-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
+        .content{position:relative;z-index:1}
+        header{padding:1.5rem 5%;background:rgba(5,5,8,0.85);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+        nav{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto}
+        .logo img{height:120px;width:auto;filter:brightness(0.95)}
+        .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+        .nav-links a,.dropdown-toggle{color:var(--text-dim);text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.02em;transition:color .3s;text-transform:uppercase;cursor:pointer}
+        .nav-links a:hover,.dropdown-toggle:hover{color:var(--text-bright)}
+        .dropdown{position:relative}.dropdown-arrow{font-size:.6rem;transition:transform .3s;opacity:.5}.dropdown:hover .dropdown-arrow{transform:rotate(180deg);opacity:1}
+        .dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(12px);background:rgba(14,14,20,.97);border:1px solid var(--border);border-radius:8px;padding:.4rem 0;min-width:180px;opacity:0;visibility:hidden;transition:all .25s;list-style:none;z-index:101}
+        .dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(6px)}
+        .dropdown-menu a{display:block;padding:.65rem 1.4rem;color:var(--text-dim);text-decoration:none;font-weight:400;font-size:.85rem;text-transform:none;letter-spacing:0}
+        .dropdown-menu a:hover{background:rgba(255,255,255,.04);color:var(--text-bright)}
+        .btn{padding:.7rem 1.8rem;background:var(--surface);color:var(--text-bright);border:1px solid var(--border);border-radius:6px;font-weight:500;font-size:.85rem;letter-spacing:.03em;text-decoration:none;display:inline-block;text-transform:uppercase;transition:all .3s}
+        .btn:hover{border-color:var(--border-hover);background:var(--surface-hover)}
+        /* Terminal / Dashboard aesthetic */
+        .hero{padding:5rem 5% 3rem;max-width:1000px;margin:0 auto}
+        .hero .tag{display:inline-block;padding:.25rem .7rem;background:rgba(74,107,90,.1);border:1px solid rgba(74,107,90,.25);border-radius:4px;font-size:.7rem;color:var(--green-bright);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.5rem}
+        .hero h1{font-size:3rem;color:var(--text-bright);font-weight:300;letter-spacing:-.02em;margin-bottom:1rem}
+        .hero p{font-size:1.1rem;color:var(--text-dim);max-width:700px;line-height:1.7}
+        .terminal-panel{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:2rem 0}
+        .terminal-header{background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem}
+        .terminal-dot{width:10px;height:10px;border-radius:50%;background:var(--border)}
+        .terminal-dot.green{background:var(--green)}
+        .terminal-body{padding:1.5rem;font-family:'Cascadia Code','Fira Code','JetBrains Mono',monospace;font-size:.8rem;color:var(--text-dim);line-height:1.8;overflow-x:auto}
+        .terminal-body .prompt{color:var(--green-bright)}
+        .terminal-body .cmd{color:var(--text-bright)}
+        .terminal-body .output{color:var(--text-dim)}
+        .terminal-body .highlight{color:var(--green-bright)}
+        .section{padding:4rem 5%;max-width:1100px;margin:0 auto}
+        .section h2{font-size:1.8rem;color:var(--text-bright);font-weight:300;margin-bottom:.5rem}
+        .section .desc{color:var(--text-dim);margin-bottom:2.5rem;font-size:.95rem;line-height:1.7}
+        .grid-dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem}
+        .dash-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:all .3s;position:relative;overflow:hidden}
+        .dash-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:opacity .3s}
+        .dash-card:hover{border-color:var(--border-hover);background:var(--surface-hover)}.dash-card:hover::after{opacity:.4}
+        .dash-card .metric{font-size:2rem;font-weight:300;color:var(--text-bright);font-family:monospace;margin-bottom:.3rem}
+        .dash-card .metric-label{font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+        .dash-card h4{color:var(--text-bright);font-weight:500;font-size:1rem;margin-bottom:.5rem}
+        .dash-card p{color:var(--text-dim);font-size:.85rem;line-height:1.65}
+        .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+        .spec-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.8rem}
+        .spec-card h4{color:var(--text-bright);font-weight:500;font-size:.95rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+        .spec-card h4::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%}
+        .pill-row{display:flex;flex-wrap:wrap;gap:.4rem}
+        .pill{padding:.25rem .65rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+        .pill.green{border-color:rgba(74,107,90,.3);color:var(--green-bright)}
+        .section-divider{text-align:center;padding:1rem 0}
+        .section-divider svg{width:60px;height:2px;opacity:.2}
+        .cta-section{padding:5rem 5%;text-align:center}
+        .cta-section h2{font-size:2rem;color:var(--text-bright);font-weight:300;margin-bottom:.5rem}
+        .cta-section p{color:var(--text-dim);margin-bottom:2rem}
+        footer{padding:3rem 5%;background:var(--surface);border-top:1px solid var(--border)}
+        .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;max-width:1200px;margin:0 auto 2rem}
+        .footer-col h4{color:var(--text-dim);margin-bottom:1rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em}
+        .footer-col a{display:block;color:rgba(255,255,255,.3);text-decoration:none;padding:.25rem 0;font-size:.85rem}.footer-col a:hover{color:var(--text-bright)}
+        .footer-bottom{text-align:center;color:rgba(255,255,255,.15);font-size:.75rem;max-width:1200px;margin:0 auto}
+        @media(max-width:768px){.hero h1{font-size:2rem}.nav-links{display:none}.logo img{height:70px}.grid-2,.grid-dash{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
@@ -69,121 +74,106 @@
     <div class="content">
         <header>
             <nav>
-                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations Logo"></a></div>
+                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="W3I"></a></div>
                 <ul class="nav-links">
-                    <li class="dropdown">
-                        <span class="dropdown-toggle">Products <span class="dropdown-arrow">▼</span></span>
-                        <ul class="dropdown-menu">
-                            <li><a href="apex-ai.html">Apex AI</a></li>
-                            <li><a href="exagent.html">Exagent</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li class="dropdown"><span class="dropdown-toggle">Products <span class="dropdown-arrow">▾</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="exagent.html">Exagent</a></li></ul></li>
+                    <li><a href="index.html#about">Approach</a></li><li><a href="index.html#faq">FAQ</a></li>
                 </ul>
-                <a href="contact.html" class="cta-button">Contact Us</a>
+                <a href="contact.html" class="btn">Contact</a>
             </nav>
         </header>
 
-        <section class="page-hero">
-            <div>
-                <span class="tag">AI Trading</span>
-                <h1>Exagent</h1>
-                <p>A private command center where a group can deploy, control, monitor, and verify LLM trading agents across prediction markets, perpetual futures, spot markets, and EVM decentralized exchanges.</p>
+        <section class="hero">
+            <span class="tag">AI Trading</span>
+            <h1>Exagent</h1>
+            <p>A private command center where a group deploys, controls, monitors, and verifies LLM trading agents across prediction markets, perpetual futures, spot markets, and EVM decentralized exchanges.</p>
+            <div class="terminal-panel">
+                <div class="terminal-header">
+                    <div class="terminal-dot green"></div><div class="terminal-dot"></div><div class="terminal-dot"></div>
+                    <span style="margin-left:.5rem;font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;">Agent Session — live</span>
+                </div>
+                <div class="terminal-body">
+                    <div><span class="prompt">agent$</span> <span class="cmd">deploy --strategy=momentum --venue=hyperliquid_perps</span></div>
+                    <div><span class="output">[OK] Agent deployed. Runner connected.</span></div>
+                    <div><span class="output">[OK] Venue: Hyperliquid Perps | Chain: Arbitrum</span></div>
+                    <div><span class="output">[OK] Strategy: Momentum Trader | LLM: Anthropic Claude</span></div>
+                    <div style="margin-top:.5rem"><span class="prompt">agent$</span> <span class="cmd">market-data --symbol=BTC</span></div>
+                    <div><span class="output">price: <span class="highlight">87,234.50</span> | 24h: +2.3% | vol: 1.2B</span></div>
+                    <div style="margin-top:.5rem"><span class="prompt">agent$</span> <span class="cmd">signal</span></div>
+                    <div><span class="output">[SIGNAL] LONG @ 87,200 | size: 0.5 BTC | leverage: 3x</span></div>
+                    <div><span class="output">[CHECK] Within limits: ✓ | Slippage: 0.1% | Risk: OK</span></div>
+                    <div><span class="output">[EXECUTED] Fill: 87,198.50 | Order ID: 0x7a3f...</span></div>
+                    <div style="margin-top:.5rem;opacity:.5">█</div>
+                </div>
             </div>
         </section>
 
+        <div class="section-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width=".5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity=".5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width=".5"/></svg></div>
+
         <section class="section">
-            <h2>What Exagent Does</h2>
-            <p>Exagent gives you one dashboard to manage multiple LLM-powered trading agents running on local devices. Each agent runs on Exagent Runner — a desktop app that keeps your LLM keys and trading wallet keys in your device keychain. You control what the agents can do, monitor their trades in real time, and verify results against venue APIs and blockchain evidence.</p>
-            <div class="grid-2">
-                <div class="info-card"><h4>🤖 LLM Trading Agents</h4><p>Deploy agents using built-in strategy templates or prompt-backed strategies. Agents get market data, ask the configured LLM for structured trade signals, validate them against your risk rules, and execute within strict limits.</p></div>
-                <div class="info-card"><h4>🔐 Local Key Control</h4><p>LLM API keys and trading wallet private keys stay on your device in the operating-system keychain. The dashboard never holds your trading keys.</p></div>
-                <div class="info-card"><h4>📊 Live Dashboard</h4><p>View portfolio PnL, active trades, positions, market data, agent logs, news feeds, and leaderboard rankings — all updating in real time via WebSocket.</p></div>
-                <div class="info-card"><h4>✅ Proof & Verification</h4><p>Reported trades are compared against venue APIs and blockchain receipts. Each trade gets a verification tier. Leaderboard scores can be filtered to show only verified activity.</p></div>
-                <div class="info-card"><h4>🛡️ Bounded Execution</h4><p>Every agent has fixed venue, chain, token, size, leverage, slippage, and signer limits. Raw transactions, unlimited approvals, transfers, bridges, deposits, and withdrawals are blocked from autonomous strategy output by default.</p></div>
-                <div class="info-card"><h4>🏆 Competitions & Marketplace</h4><p>Compare agents on a shared leaderboard. Enter tournaments. Browse a strategy marketplace where others can list their prompt-backed strategies.</p></div>
+            <h2>Dashboard overview</h2>
+            <p class="desc">Six panels. Live WebSocket updates. Complete visibility into agent activity.</p>
+            <div class="grid-dash">
+                <div class="dash-card"><div class="metric">$124.8K</div><div class="metric-label">Portfolio PnL (24h)</div><h4>Portfolio</h4><p>Real-time profit and loss across all agents, positions, and venues. Drill into per-agent performance.</p></div>
+                <div class="dash-card"><div class="metric">14</div><div class="metric-label">Active Positions</div><h4>Positions</h4><p>Monitor open positions, entry prices, current mark prices, unrealized PnL, and liquidation risks.</p></div>
+                <div class="dash-card"><div class="metric">3</div><div class="metric-label">Agents Online</div><h4>Agents</h4><p>Agent status (online, idle, error, offline). Start, stop, and configure agents. View logs and command history.</p></div>
+                <div class="dash-card"><div class="metric">89%</div><div class="metric-label">Trades Verified</div><h4>Proof System</h4><p>Reconciliation service compares reported trades against venue APIs and blockchain receipts. Verification tiers distinguish proven fills from reported-only activity.</p></div>
+                <div class="dash-card"><div class="metric">#2</div><div class="metric-label">Leaderboard Rank</div><h4>Leaderboard</h4><p>Compare agent performance across the group. Filter by verified-only scores. Track tournament standings.</p></div>
+                <div class="dash-card"><div class="metric">2.4s</div><div class="metric-label">Avg Signal Latency</div><h4>Performance</h4><p>Market data ingestion, LLM signal generation, validation, and execution timing. Optimize for speed or safety.</p></div>
             </div>
         </section>
 
-        <section class="section" style="background:linear-gradient(180deg,transparent 0%,rgba(0,212,255,0.05) 50%,transparent 100%);">
-            <h2>How It Works</h2>
-            <div class="workflow-step"><div class="step-num">1</div><div><h4>Set Up Your Account & Agent</h4><p>Create an account (whitelisted access), complete your profile, connect an LLM provider, set up your wallet, and configure your product preferences. Select a built-in strategy template — Momentum Trader, Value Investor, Arbitrage Hunter, or Hold — or create a prompt-backed strategy.</p></div></div>
-            <div class="workflow-step"><div class="step-num">2</div><div><h4>Pair with Exagent Runner</h4><p>Download Exagent Runner, the local desktop app. Runner stores your LLM key and agent wallet private key in your operating-system keychain. Your keys never leave your device.</p></div></div>
-            <div class="workflow-step"><div class="step-num">3</div><div><h4>Agent Gets Market Data & Generates Signals</h4><p>The local agent receives market data, asks the selected LLM for structured trade signals, validates those signals against your risk limits, and applies deterministic signer rules.</p></div></div>
-            <div class="workflow-step"><div class="step-num">4</div><div><h4>Bounded Execution</h4><p>If a signal is within allowed limits (venue, chain, token, size, leverage, slippage), the agent can send the order. The venue returns the actual fill data. Autonomous bridges, transfers, and unlimited approvals are blocked by default.</p></div></div>
-            <div class="workflow-step"><div class="step-num">5</div><div><h4>Live Reporting & Verification</h4><p>The agent sends fill data through an authenticated WebSocket to the Exagent API. A reconciliation service compares reported fills against venue APIs and blockchain receipts. Verified, reported-only, and flagged activity are clearly distinguished.</p></div></div>
-            <div class="workflow-step"><div class="step-num">6</div><div><h4>Monitor, Compare & Control</h4><p>The dashboard shows portfolio PnL, active trades, agent logs, proof status, and leaderboard results. You can send bounded remote commands. Sensitive changes need owner confirmation. Offline commands queue until reconnection.</p></div></div>
-        </section>
+        <div class="section-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width=".5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity=".5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width=".5"/></svg></div>
 
         <section class="section">
-            <h2>Supported Venues & Providers</h2>
+            <h2>Supported infrastructure</h2>
             <div class="grid-2">
-                <div class="info-card">
+                <div class="spec-card">
                     <h4>Trading Venues</h4>
-                    <span class="venue-tag">Hyperliquid Perps</span><span class="venue-tag">Hyperliquid Spot</span><span class="venue-tag">Polymarket</span><span class="venue-tag">Uniswap</span><span class="venue-tag">Aerodrome</span>
-                    <p style="margin-top:1rem;">Additional venues and EVM chains can be added through the TypeScript agent and SDK packages.</p>
+                    <div class="pill-row">
+                        <span class="pill green">Hyperliquid Perps</span><span class="pill green">Hyperliquid Spot</span><span class="pill">Polymarket</span><span class="pill">Uniswap</span><span class="pill">Aerodrome</span>
+                    </div>
+                    <p style="margin-top:1rem;font-size:.8rem;color:var(--text-dim)">Additional EVM venues and chains via TypeScript SDK</p>
                 </div>
-                <div class="info-card">
+                <div class="spec-card">
                     <h4>LLM Providers</h4>
-                    <span class="llm-tag">OpenAI</span><span class="llm-tag">Anthropic</span><span class="llm-tag">Google</span><span class="llm-tag">DeepSeek</span><span class="llm-tag">Mistral</span><span class="llm-tag">Groq</span><span class="llm-tag">Together</span><span class="llm-tag">Local Ollama</span>
-                    <p style="margin-top:1rem;">Choose any supported LLM or run models locally with Ollama for full privacy.</p>
+                    <div class="pill-row">
+                        <span class="pill">OpenAI</span><span class="pill">Anthropic</span><span class="pill">Google</span><span class="pill">DeepSeek</span><span class="pill">Mistral</span><span class="pill">Groq</span><span class="pill">Together</span><span class="pill green">Local Ollama</span>
+                    </div>
+                    <p style="margin-top:1rem;font-size:.8rem;color:var(--text-dim)">Run models locally with Ollama for full privacy</p>
                 </div>
-            </div>
-        </section>
-
-        <section class="section limitations">
-            <h2>What Exagent Is — And Isn't</h2>
-            <div class="grid-2">
-                <div class="info-card">
-                    <h4>Exagent Is</h4>
-                    <ul>
-                        <li>A private command center for groups running LLM trading agents</li>
-                        <li>A local agent runtime that keeps your keys on your device</li>
-                        <li>Multi-venue: prediction markets, perpetual futures, spot, EVM DEXs</li>
-                        <li>Verifiable: trades are checked against venue APIs and blockchain receipts</li>
-                        <li>Strategy templates and prompt-backed strategies</li>
-                    </ul>
+                <div class="spec-card">
+                    <h4>Strategy Templates</h4>
+                    <div class="pill-row">
+                        <span class="pill green">Momentum Trader</span><span class="pill">Value Investor</span><span class="pill">Arbitrage Hunter</span><span class="pill">Hold</span>
+                    </div>
+                    <p style="margin-top:1rem;font-size:.8rem;color:var(--text-dim)">Built-in templates or create prompt-backed strategies</p>
                 </div>
-                <div class="info-card">
-                    <h4>Exagent Is Not</h4>
-                    <ul>
-                        <li>A general business automation or workflow tool</li>
-                        <li>A no-code automation builder (no Zapier-style connectors)</li>
-                        <li>A custodian that holds your trading keys or funds</li>
-                        <li>A product with public pricing or a paid launch (yet)</li>
-                        <li>A tool with SOC 2 or other compliance certifications</li>
-                        <li>Integrated with Apex AI (the products are independent)</li>
-                    </ul>
+                <div class="spec-card">
+                    <h4>Security</h4>
+                    <div class="pill-row">
+                        <span class="pill green">OS Keychain</span><span class="pill">AES-256-GCM</span><span class="pill">Whitelist Auth</span><span class="pill">JWT Sessions</span>
+                    </div>
+                    <p style="margin-top:1rem;font-size:.8rem;color:var(--text-dim)">Keys stay on your device. Bounded agent execution.</p>
                 </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Security & Architecture</h2>
-            <div class="grid-2">
-                <div class="info-card"><h4>🔐 Key Management</h4><p>LLM API keys and wallet private keys use OS keychain storage via Exagent Runner. Server uses AES-256-GCM envelope encryption for stored credentials. Bootstrap packages are encrypted, expire after 24 hours, and are single-use only.</p></div>
-                <div class="info-card"><h4>🛡️ Bounded Autonomy</h4><p>Every agent operates under fixed limits. Autonomous bridge, deposit, withdrawal, token transfer, raw transaction, and unlimited approval actions are blocked from strategy output by default.</p></div>
-                <div class="info-card"><h4>📝 Access Controls</h4><p>Whitelisted-email registration. bcrypt-hashed passwords. JWT sessions. Separate scoped agent tokens. Member, admin, and owner roles. Rate limits on sensitive routes.</p></div>
-                <div class="info-card"><h4>✅ Proof System</h4><p>Trade data is compared against venue API and blockchain evidence. Verification tiers distinguish proven fills from reported-only activity. Leaderboard scores exclude unverified and flagged activity.</p></div>
             </div>
         </section>
 
         <section class="cta-section">
             <h2>Interested in Exagent?</h2>
             <p>Built for private groups running LLM trading agents. Currently in use by a private group.</p>
-            <a href="contact.html" class="cta-button">Contact Us</a>
+            <a href="contact.html" class="btn">Get In Touch</a>
         </section>
 
         <footer>
             <div class="footer-grid">
                 <div class="footer-col"><h4>Products</h4><a href="apex-ai.html">Apex AI</a><a href="exagent.html">Exagent</a></div>
                 <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-                <div class="footer-col"><h4>Resources</h4><a href="security.html">Security</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+                <div class="footer-col"><h4>Resources</h4><a href="security.html">Security</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
             </div>
             <div class="footer-bottom"><p>&copy; 2026 Web Three Innovations. All Rights Reserved.</p></div>
         </footer>
     </div>
-    <script>const c=document.getElementById('stars-canvas'),ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;class S{constructor(){this.reset();this.y=Math.random()*c.height}reset(){this.x=Math.random()*c.width;this.y=-10;this.size=Math.random()*2+0.5;this.speed=Math.random()*0.5+0.2;this.opacity=Math.random()*0.5+0.5;this.color=Math.random()>0.5?'#00d4ff':'#ffffff'}update(){if(this.y>c.height)this.reset();this.y+=this.speed}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.opacity;ctx.fill();ctx.globalAlpha=1;ctx.beginPath();ctx.moveTo(this.x,this.pastY||this.y-this.speed);ctx.lineTo(this.x,this.y);ctx.strokeStyle=this.color;ctx.globalAlpha=this.opacity*0.3;ctx.lineWidth=this.size;ctx.stroke();ctx.globalAlpha=1}}class C{constructor(a,b){this.a=a;this.b=b}draw(){let d=Math.hypot(this.a.x-this.b.x,this.a.y-this.b.y);if(d<150){ctx.beginPath();ctx.moveTo(this.a.x,this.a.y);ctx.lineTo(this.b.x,this.b.y);ctx.strokeStyle='#00d4ff';ctx.globalAlpha=(1-d/150)*0.2;ctx.lineWidth=0.5;ctx.stroke();ctx.globalAlpha=1}}}let s=[];for(let i=0;i<150;i++)s.push(new S());(function A(){ctx.fillStyle='rgba(10,10,26,0.1)';ctx.fillRect(0,0,c.width,c.height);s.forEach(t=>{t.pastY=t.y;t.update();t.draw()});for(let i=0;i<s.length;i++)for(let j=i+1;j<s.length;j++)new C(s[i],s[j]).draw();requestAnimationFrame(A)})();window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight});</script>
+    <script>const c=document.getElementById('stars-canvas'),ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;let S=[];for(let i=0;i<200;i++)S.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*.8+.2,o:Math.random()*.4+.1,s:Math.random()*.15+.03});function A(){ctx.fillStyle='rgba(5,5,8,.15)';ctx.fillRect(0,0,c.width,c.height);S.forEach(s=>{s.y+=s.s;if(s.y>c.height){s.y=0;s.x=Math.random()*c.width}ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(180,190,210,${s.o})`;ctx.fill()});requestAnimationFrame(A)}A();window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight});</script>
 </body>
 </html>

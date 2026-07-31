@@ -7,69 +7,103 @@
     <title>Web Three Innovations | AI Software Products</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
-        :root { --primary-color:#00d4ff; --secondary-color:#0066ff; --accent-color:#ff00ff; --text-color:#ffffff; --dark-bg:#0a0a1a; --card-bg:rgba(15,15,35,0.85); }
-        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:var(--dark-bg); color:var(--text-color); overflow-x:hidden; line-height:1.6; }
-        #stars-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; background:linear-gradient(135deg,#0a0a1a 0%,#1a0a2e 50%,#0a0a1a 100%); }
+        :root {
+            --bg: #050508;
+            --surface: #0e0e14;
+            --surface-hover: #16161f;
+            --border: #1a1a26;
+            --border-hover: #2a2a3a;
+            --text: #c8c8d4;
+            --text-dim: #6b6b7a;
+            --text-bright: #e8e8f0;
+            --accent: #808899;
+            --accent-glow: rgba(150,160,180,0.15);
+            --dot: #4a4a5a;
+        }
+        body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; line-height:1.6; -webkit-font-smoothing:antialiased; }
+        #stars-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
         .content { position:relative; z-index:1; }
-        header { padding:1.5rem 5%; backdrop-filter:blur(10px); background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(0,212,255,0.3); }
+        header { padding:1.5rem 5%; background:rgba(5,5,8,0.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,0.06); }
         nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
-        .logo img { height:150px; width:auto; }
-        .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
-        .nav-links a { color:#1a1a2e; text-decoration:none; font-weight:500; transition:color 0.3s; position:relative; }
-        .nav-links a:hover { color:var(--primary-color); }
-        .nav-links > li > a::after { content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:var(--primary-color); transition:width 0.3s; }
+        .logo img { height:120px; width:auto; filter:brightness(0.95); }
+        .nav-links { display:flex; gap:2.5rem; list-style:none; align-items:center; }
+        .nav-links a { color:var(--text-dim); text-decoration:none; font-weight:500; font-size:0.9rem; letter-spacing:0.02em; transition:color 0.3s; position:relative; text-transform:uppercase; }
+        .nav-links a:hover { color:var(--text-bright); }
+        .nav-links > li > a::after { content:''; position:absolute; bottom:-6px; left:0; width:0; height:1px; background:rgba(255,255,255,0.4); transition:width 0.3s; }
         .nav-links > li > a:hover::after { width:100%; }
         .dropdown { position:relative; }
-        .dropdown-toggle { cursor:pointer; display:flex; align-items:center; gap:0.3rem; color:#1a1a2e; font-weight:500; }
-        .dropdown-arrow { font-size:0.7rem; transition:transform 0.3s; }
-        .dropdown:hover .dropdown-arrow { transform:rotate(180deg); }
-        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(10px); background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:10px; padding:0.5rem 0; min-width:200px; opacity:0; visibility:hidden; transition:all 0.3s; list-style:none; z-index:101; }
-        .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(5px); }
+        .dropdown-toggle { cursor:pointer; display:flex; align-items:center; gap:0.3rem; color:var(--text-dim); font-size:0.9rem; letter-spacing:0.02em; text-transform:uppercase; font-weight:500; }
+        .dropdown-arrow { font-size:0.6rem; transition:transform 0.3s; opacity:0.5; }
+        .dropdown:hover .dropdown-arrow { transform:rotate(180deg); opacity:1; }
+        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(12px); background:rgba(14,14,20,0.97); backdrop-filter:blur(20px); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0; min-width:180px; opacity:0; visibility:hidden; transition:all 0.25s; list-style:none; z-index:101; }
+        .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(6px); }
         .dropdown-menu li { padding:0; }
-        .dropdown-menu a { display:block; padding:0.7rem 1.5rem; color:var(--text-color); text-decoration:none; font-weight:500; transition:all 0.3s; white-space:nowrap; }
-        .dropdown-menu a:hover { background:rgba(0,212,255,0.1); color:var(--primary-color); }
+        .dropdown-menu a { display:block; padding:0.65rem 1.4rem; color:var(--text-dim); text-decoration:none; font-weight:400; font-size:0.85rem; transition:all 0.2s; white-space:nowrap; text-transform:none; letter-spacing:0; }
+        .dropdown-menu a:hover { background:rgba(255,255,255,0.04); color:var(--text-bright); }
         .dropdown-menu a::after { display:none; }
-        .cta-button { padding:0.8rem 2rem; background:linear-gradient(135deg,var(--primary-color),var(--secondary-color)); color:white; border:none; border-radius:50px; font-weight:600; cursor:pointer; transition:transform 0.3s,box-shadow 0.3s; text-decoration:none; display:inline-block; }
-        .cta-button:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
-        .cta-secondary { padding:0.8rem 2rem; background:transparent; color:var(--primary-color); border:2px solid var(--primary-color); border-radius:50px; font-weight:600; transition:all 0.3s; text-decoration:none; display:inline-block; }
-        .cta-secondary:hover { background:rgba(0,212,255,0.1); }
-        .hero { min-height:80vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; }
-        .hero-content { max-width:850px; animation:fadeInUp 1s ease-out; }
-        .hero h1 { font-size:3.2rem; margin-bottom:1.5rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1.2; }
-        .hero .subtitle { font-size:1.3rem; margin-bottom:2.5rem; color:rgba(255,255,255,0.8); }
-        .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
-        .hero-trust { font-size:0.9rem; color:rgba(255,255,255,0.5); margin-top:1.5rem; }
-        .section { padding:5rem 5%; max-width:1200px; margin:0 auto; }
-        .section-title { font-size:2.5rem; text-align:center; margin-bottom:1rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .section-subtitle { text-align:center; color:rgba(255,255,255,0.7); margin-bottom:4rem; font-size:1.1rem; }
-        .product-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); gap:2.5rem; max-width:1000px; margin:0 auto; }
-        .product-card { background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:20px; padding:2.5rem; transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s; text-decoration:none; color:inherit; display:block; animation:fadeInUp 0.8s ease-out backwards; }
-        .product-card:nth-child(1) { animation-delay:0.1s; }
-        .product-card:nth-child(2) { animation-delay:0.2s; }
-        .product-card:hover { transform:translateY(-10px); border-color:var(--primary-color); box-shadow:0 20px 60px rgba(0,212,255,0.2); }
-        .product-card .icon { font-size:3rem; margin-bottom:1.5rem; }
-        .product-card h3 { font-size:1.8rem; margin-bottom:1rem; color:var(--primary-color); }
-        .product-card p { color:rgba(255,255,255,0.8); line-height:1.8; margin-bottom:1.5rem; }
-        .product-card .tag { display:inline-block; padding:0.3rem 0.8rem; background:rgba(0,212,255,0.15); border:1px solid rgba(0,212,255,0.3); border-radius:20px; font-size:0.8rem; color:var(--primary-color); }
-        .about-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; }
-        .card { background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:20px; padding:2.5rem; transition:transform 0.3s; }
-        .card:hover { transform:translateY(-5px); border-color:var(--primary-color); box-shadow:0 20px 60px rgba(0,212,255,0.2); }
-        .card h3 { font-size:1.5rem; margin-bottom:1rem; color:var(--primary-color); }
-        .card p { color:rgba(255,255,255,0.8); line-height:1.8; }
-        .cta-section { padding:6rem 5%; text-align:center; }
-        .cta-section h2 { font-size:2.2rem; margin-bottom:1rem; }
-        .cta-section p { font-size:1.1rem; margin-bottom:2rem; color:rgba(255,255,255,0.8); }
-        .faq-item { background:var(--card-bg); border:1px solid rgba(0,212,255,0.1); border-radius:12px; padding:1.5rem 2rem; margin-bottom:1rem; }
-        .faq-item h4 { color:var(--primary-color); margin-bottom:0.5rem; }
-        .faq-item p { color:rgba(255,255,255,0.7); line-height:1.7; }
-        footer { padding:3rem 5%; background:var(--card-bg); backdrop-filter:blur(10px); border-top:1px solid rgba(0,212,255,0.1); }
-        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
-        .footer-col h4 { color:var(--primary-color); margin-bottom:1rem; font-size:1rem; }
-        .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; transition:color 0.3s; }
-        .footer-col a:hover { color:var(--primary-color); }
-        .footer-bottom { text-align:center; color:rgba(255,255,255,0.4); font-size:0.85rem; max-width:1200px; margin:0 auto; }
-        @keyframes fadeInUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
-        @media (max-width:768px) { .hero h1 { font-size:2.2rem; } .section-title { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } .product-cards { grid-template-columns:1fr; } }
+        .btn { padding:0.7rem 1.8rem; background:var(--surface); color:var(--text-bright); border:1px solid var(--border); border-radius:6px; font-weight:500; font-size:0.85rem; letter-spacing:0.03em; cursor:pointer; transition:all 0.3s; text-decoration:none; display:inline-block; text-transform:uppercase; }
+        .btn:hover { border-color:var(--border-hover); background:var(--surface-hover); box-shadow:0 0 30px rgba(255,255,255,0.03); }
+        .btn-ghost { background:transparent; border-color:transparent; }
+        .btn-ghost:hover { background:rgba(255,255,255,0.03); }
+        .hero { min-height:85vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; position:relative; }
+        .hero::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:600px; background:radial-gradient(circle,rgba(255,255,255,0.02) 0%,transparent 70%); pointer-events:none; }
+        .hero-content { max-width:750px; animation:fadeInUp 1.2s ease-out; position:relative; }
+        .hero h1 { font-size:3.5rem; margin-bottom:1.5rem; color:var(--text-bright); font-weight:300; letter-spacing:-0.02em; line-height:1.15; }
+        .hero h1 span { font-weight:600; }
+        .hero .subtitle { font-size:1.15rem; margin-bottom:2.5rem; color:var(--text-dim); max-width:550px; margin-left:auto; margin-right:auto; line-height:1.7; }
+        .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+        .hero-trust { font-size:0.8rem; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:0.1em; }
+        .section { padding:6rem 5%; max-width:1200px; margin:0 auto; }
+        .section-label { text-align:center; color:var(--text-dim); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1rem; }
+        .section-title { font-size:2.2rem; text-align:center; margin-bottom:1rem; color:var(--text-bright); font-weight:300; letter-spacing:-0.01em; }
+        .section-subtitle { text-align:center; color:var(--text-dim); margin-bottom:4rem; font-size:1rem; max-width:550px; margin-left:auto; margin-right:auto; }
+        .product-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(380px,1fr)); gap:1.5rem; max-width:950px; margin:0 auto; }
+        .product-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:2.5rem; transition:all 0.35s; text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; }
+        .product-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent); opacity:0; transition:opacity 0.35s; }
+        .product-card:hover { border-color:var(--border-hover); background:var(--surface-hover); transform:translateY(-2px); }
+        .product-card:hover::before { opacity:1; }
+        .product-card .icon-wrap { width:48px; height:48px; border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem; background:rgba(255,255,255,0.02); }
+        .product-card .icon-wrap svg { width:22px; height:22px; stroke:var(--text-dim); fill:none; stroke-width:1.5; }
+        .product-card:hover .icon-wrap svg { stroke:var(--text-bright); }
+        .product-card h3 { font-size:1.4rem; margin-bottom:0.8rem; color:var(--text-bright); font-weight:500; }
+        .product-card p { color:var(--text-dim); line-height:1.7; margin-bottom:1.2rem; font-size:0.95rem; }
+        .product-card .tag { display:inline-block; padding:0.25rem 0.7rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:4px; font-size:0.7rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em; }
+        .process-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem; }
+        .process-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:2rem; transition:all 0.3s; position:relative; }
+        .process-card:hover { border-color:var(--border-hover); background:var(--surface-hover); }
+        .process-card .step-num { font-size:0.7rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem; }
+        .process-card h3 { color:var(--text-bright); font-weight:500; font-size:1.1rem; margin-bottom:0.7rem; }
+        .process-card p { color:var(--text-dim); font-size:0.9rem; line-height:1.7; }
+        .faq-item { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.5rem 2rem; margin-bottom:0.75rem; transition:border-color 0.3s; }
+        .faq-item:hover { border-color:var(--border-hover); }
+        .faq-item h4 { color:var(--text-bright); margin-bottom:0.5rem; font-size:1rem; font-weight:500; }
+        .faq-item p { color:var(--text-dim); line-height:1.7; font-size:0.9rem; }
+        .cta-section { padding:6rem 5%; text-align:center; position:relative; }
+        .cta-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:400px; height:400px; background:radial-gradient(circle,rgba(255,255,255,0.015) 0%,transparent 70%); pointer-events:none; }
+        .cta-section h2 { font-size:2rem; margin-bottom:1rem; color:var(--text-bright); font-weight:300; }
+        .cta-section p { font-size:1rem; margin-bottom:2.5rem; color:var(--text-dim); }
+        .orbital-ring { position:absolute; border:1px solid rgba(255,255,255,0.04); border-radius:50%; pointer-events:none; }
+        footer { padding:3rem 5%; background:var(--surface); border-top:1px solid var(--border); }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
+        .footer-col h4 { color:var(--text-dim); margin-bottom:1rem; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; }
+        .footer-col a { display:block; color:rgba(255,255,255,0.3); text-decoration:none; padding:0.25rem 0; font-size:0.85rem; transition:color 0.3s; }
+        .footer-col a:hover { color:var(--text-bright); }
+        .footer-bottom { text-align:center; color:rgba(255,255,255,0.15); font-size:0.75rem; max-width:1200px; margin:0 auto; letter-spacing:0.04em; }
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes orbit { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+        @keyframes pulse { 0%,100% { opacity:0.3; } 50% { opacity:0.6; } }
+        .orbit-container { position:relative; width:200px; height:200px; margin:0 auto 2rem; }
+        .orbit-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:8px; height:8px; background:var(--text-dim); border-radius:50%; }
+        .orbit-path { position:absolute; top:0; left:0; width:100%; height:100%; border:1px solid rgba(255,255,255,0.06); border-radius:50%; animation:orbit 20s linear infinite; }
+        .orbit-path:nth-child(2) { width:70%; height:70%; top:15%; left:15%; animation-duration:14s; animation-direction:reverse; }
+        .orbit-path:nth-child(3) { width:40%; height:40%; top:30%; left:30%; animation-duration:10s; }
+        .orbit-dot { position:absolute; width:4px; height:4px; background:rgba(255,255,255,0.4); border-radius:50%; top:0; left:50%; margin-left:-2px; margin-top:-2px; }
+        /* Geometric divider */
+        .geo-divider { text-align:center; padding:1rem 0; }
+        .geo-divider svg { width:60px; height:2px; opacity:0.3; }
+        @media (max-width:768px) {
+            .hero h1 { font-size:2.2rem; } .section-title { font-size:1.8rem; } .nav-links { display:none; } .logo img { height:70px; } .product-cards { grid-template-columns:1fr; }
+        }
     </style>
 </head>
 <body>
@@ -77,98 +111,116 @@
     <div class="content">
         <header>
             <nav>
-                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations Logo"></a></div>
+                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations"></a></div>
                 <ul class="nav-links">
                     <li class="dropdown">
-                        <span class="dropdown-toggle">Products <span class="dropdown-arrow">▼</span></span>
+                        <span class="dropdown-toggle">Products <span class="dropdown-arrow">▾</span></span>
                         <ul class="dropdown-menu">
                             <li><a href="apex-ai.html">Apex AI</a></li>
                             <li><a href="exagent.html">Exagent</a></li>
                         </ul>
                     </li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">Approach</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
-                <a href="contact.html" class="cta-button">Contact Us</a>
+                <a href="contact.html" class="btn">Contact</a>
             </nav>
         </header>
 
         <section class="hero">
             <div class="hero-content">
-                <h1>We Build AI Software Products</h1>
-                <p class="subtitle">Web Three Innovations creates practical AI tools for sales automation and algorithmic trading — always under full human control.</p>
-                <div class="hero-ctas">
-                    <a href="#products" class="cta-button">Explore Our Products</a>
-                    <a href="contact.html" class="cta-secondary">Get In Touch</a>
+                <div class="orbit-container">
+                    <div class="orbit-center"></div>
+                    <div class="orbit-path"><div class="orbit-dot"></div></div>
+                    <div class="orbit-path"><div class="orbit-dot"></div></div>
+                    <div class="orbit-path"><div class="orbit-dot"></div></div>
                 </div>
-                <p class="hero-trust">Private by design · Human-in-the-loop · Full audit trails</p>
+                <h1><span>Precision software</span> for intelligent automation</h1>
+                <p class="subtitle">Web Three Innovations builds focused AI products for sales automation and algorithmic trading. Every tool operates under human control with full audit trails.</p>
+                <div class="hero-ctas">
+                    <a href="#products" class="btn">Explore Products</a>
+                    <a href="contact.html" class="btn btn-ghost">Get In Touch</a>
+                </div>
+                <p class="hero-trust">Private by design · Human-in-the-loop · Verifiable outputs</p>
             </div>
         </section>
 
         <section class="section" id="products">
-            <h2 class="section-title">Our Products</h2>
-            <p class="section-subtitle">Purpose-built AI tools for specific problems.</p>
+            <div class="section-label">Products</div>
+            <h2 class="section-title">Purpose-built AI</h2>
+            <p class="section-subtitle">Each product solves a specific operational challenge with precision and transparency.</p>
             <div class="product-cards">
                 <a href="apex-ai.html" class="product-card">
-                    <div class="icon">🎯</div>
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9" stroke-dasharray="4 4"/></svg>
+                    </div>
                     <h3>Apex AI</h3>
-                    <p>Top-of-funnel sales automation that researches target companies, qualifies them with your rules, prepares approved outreach, handles replies, and delivers qualified leads.</p>
+                    <p>Top-of-funnel sales automation. Research target companies, qualify them against your rules, prepare approved outreach, handle replies, and deliver qualified leads.</p>
                     <span class="tag">Sales Automation</span>
                 </a>
                 <a href="exagent.html" class="product-card">
-                    <div class="icon">📈</div>
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><polyline points="4 20 12 4 20 20"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
+                    </div>
                     <h3>Exagent</h3>
-                    <p>A private command center for groups to deploy, control, and verify LLM trading agents across prediction markets, perpetual futures, spot markets, and EVM DEXs.</p>
+                    <p>Private command center for LLM trading agents. Deploy, control, monitor, and verify agents across prediction markets, perpetual futures, spot markets, and EVM DEXs.</p>
                     <span class="tag">AI Trading</span>
                 </a>
             </div>
         </section>
 
+        <div class="geo-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width="0.5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity="0.5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width="0.5"/></svg></div>
+
         <section class="section" id="about">
-            <h2 class="section-title">How We Build</h2>
-            <p class="section-subtitle">We ship early, iterate fast, and prioritize transparency over hype.</p>
-            <div class="about-grid">
-                <div class="card">
-                    <h3>🧠 Practical AI</h3>
-                    <p>We don't add AI where a simpler solution works. Our products use AI to assist — not replace — human judgment. Every output is auditable.</p>
+            <div class="section-label">How We Build</div>
+            <h2 class="section-title">Engineering principles</h2>
+            <p class="section-subtitle">We prioritize reliability, transparency, and user control over marketing hype.</p>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="step-num">01</div>
+                    <h3>Controlled AI</h3>
+                    <p>Our products never take autonomous action on your behalf. They suggest, flag, and escalate — you approve or override every decision with full audit trails.</p>
                 </div>
-                <div class="card">
-                    <h3>🔒 Trust First</h3>
-                    <p>Your data is never used to train shared models. All products include human-in-the-loop safeguards, audit trails, and transparent accuracy reporting.</p>
+                <div class="process-card">
+                    <div class="step-num">02</div>
+                    <h3>Data Isolation</h3>
+                    <p>Your data is never used to train shared models. Each client environment is isolated, with encrypted storage and strict access controls.</p>
                 </div>
-                <div class="card">
-                    <h3>🚀 Continuous Improvement</h3>
-                    <p>We release early, collect real feedback, and iterate. Our roadmap is informed by actual users, not guesses about what people need.</p>
+                <div class="process-card">
+                    <div class="step-num">03</div>
+                    <h3>Iterative Delivery</h3>
+                    <p>We ship early with core functionality and improve based on real usage. Our roadmap is driven by actual user feedback, not speculative feature lists.</p>
                 </div>
             </div>
         </section>
 
         <section class="section" id="faq">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div style="max-width:800px;margin:0 auto;">
+            <div class="section-label">Questions</div>
+            <h2 class="section-title">Frequently asked</h2>
+            <div style="max-width:750px;margin:3rem auto 0;">
                 <div class="faq-item">
                     <h4>What does Web Three Innovations do?</h4>
-                    <p>We build AI-powered software products. Our current products are Apex AI (top-of-funnel sales automation) and Exagent (LLM trading agent command center). Each product solves a specific problem with AI assistance under full human control.</p>
+                    <p>We build AI-powered software products. Apex AI handles top-of-funnel sales automation. Exagent is a command center for LLM trading agents. Both operate under full human control with audit trails.</p>
                 </div>
                 <div class="faq-item">
-                    <h4>Is my data used to train your AI models?</h4>
-                    <p>No. Customer data is never used to train shared models. Your data is isolated to your organization. Read more in our <a href="security.html" style="color:var(--primary-color);">Security Policy</a>.</p>
+                    <h4>Is my data used to train AI models?</h4>
+                    <p>No. Customer data is never used to train shared models. Your data is isolated to your organization.</p>
                 </div>
                 <div class="faq-item">
-                    <h4>Can I try before buying?</h4>
-                    <p>We offer pilot programs where you can test our products with your own data and workflows. <a href="contact.html" style="color:var(--primary-color);">Contact us</a> to get started.</p>
+                    <h4>Can I try before purchasing?</h4>
+                    <p>We offer pilot programs where you test our products with your own data and workflows. <a href="contact.html" style="color:var(--text-bright);">Contact us</a> to start.</p>
                 </div>
                 <div class="faq-item">
-                    <h4>How do I choose between Apex AI and Exagent?</h4>
-                    <p>Apex AI is for top-of-funnel sales automation — researching target companies, qualifying them, and managing outreach. Exagent is for running LLM trading agents with a private command center. They operate independently.</p>
+                    <h4>How do Apex AI and Exagent relate?</h4>
+                    <p>They are independent products. Apex AI is for sales teams who need automated company research and outreach. Exagent is for groups running algorithmic trading strategies. They do not depend on each other.</p>
                 </div>
             </div>
         </section>
 
         <section class="cta-section">
-            <h2>Have a Problem We Can Help With?</h2>
+            <h2>Start a conversation</h2>
             <p>Tell us about your use case and we'll point you to the right product.</p>
-            <a href="contact.html" class="cta-button">Contact Us</a>
+            <a href="contact.html" class="btn">Get In Touch</a>
         </section>
 
         <footer>
@@ -183,10 +235,8 @@
 
     <script>
         const c=document.getElementById('stars-canvas'),ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;
-        class S{constructor(){this.reset();this.y=Math.random()*c.height}reset(){this.x=Math.random()*c.width;this.y=-10;this.size=Math.random()*2+0.5;this.speed=Math.random()*0.5+0.2;this.opacity=Math.random()*0.5+0.5;this.color=Math.random()>0.5?'#00d4ff':'#ffffff'}update(){if(this.y>c.height)this.reset();this.y+=this.speed}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.opacity;ctx.fill();ctx.globalAlpha=1;ctx.beginPath();ctx.moveTo(this.x,this.pastY||this.y-this.speed);ctx.lineTo(this.x,this.y);ctx.strokeStyle=this.color;ctx.globalAlpha=this.opacity*0.3;ctx.lineWidth=this.size;ctx.stroke();ctx.globalAlpha=1}}
-        class C{constructor(a,b){this.a=a;this.b=b}draw(){let d=Math.hypot(this.a.x-this.b.x,this.a.y-this.b.y);if(d<150){ctx.beginPath();ctx.moveTo(this.a.x,this.a.y);ctx.lineTo(this.b.x,this.b.y);ctx.strokeStyle='#00d4ff';ctx.globalAlpha=(1-d/150)*0.2;ctx.lineWidth=0.5;ctx.stroke();ctx.globalAlpha=1}}}
-        let s=[];for(let i=0;i<150;i++)s.push(new S());
-        (function A(){ctx.fillStyle='rgba(10,10,26,0.1)';ctx.fillRect(0,0,c.width,c.height);s.forEach(t=>{t.pastY=t.y;t.update();t.draw()});for(let i=0;i<s.length;i++)for(let j=i+1;j<s.length;j++)new C(s[i],s[j]).draw();requestAnimationFrame(A)})();
+        let S=[];for(let i=0;i<200;i++)S.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*0.8+0.2,o:Math.random()*0.4+0.1,s:Math.random()*0.15+0.03});
+        function A(){ctx.fillStyle='rgba(5,5,8,0.15)';ctx.fillRect(0,0,c.width,c.height);S.forEach(s=>{s.y+=s.s;if(s.y>c.height){s.y=0;s.x=Math.random()*c.width}ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(180,190,210,${s.o})`;ctx.fill()});requestAnimationFrame(A)}A();
         window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight});
         document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();let t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
     </script>
