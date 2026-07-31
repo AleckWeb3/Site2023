@@ -16,16 +16,15 @@
             --text: #c8c8d4;
             --text-dim: #6b6b7a;
             --text-bright: #e8e8f0;
-            --accent: #808899;
-            --accent-glow: rgba(150,160,180,0.15);
-            --dot: #4a4a5a;
         }
         body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; line-height:1.6; -webkit-font-smoothing:antialiased; }
         #stars-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
         .content { position:relative; z-index:1; }
-        header { padding:1.5rem 5%; background:rgba(5,5,8,0.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,0.06); }
+        header { padding:1.2rem 5%; background:rgba(5,5,8,0.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,0.06); }
         nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
-        .logo img { height:120px; width:auto; filter:invert(0.9) brightness(1.3); }
+        .logo a { display:flex; align-items:center; text-decoration:none; gap:0.6rem; }
+        .logo-text { font-size:1.3rem; font-weight:300; color:var(--text-bright); letter-spacing:0.15em; }
+        .logo-sub { font-size:0.55rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.2em; }
         .nav-links { display:flex; gap:2.5rem; list-style:none; align-items:center; }
         .nav-links a { color:var(--text-dim); text-decoration:none; font-weight:500; font-size:0.9rem; letter-spacing:0.02em; transition:color 0.3s; position:relative; text-transform:uppercase; }
         .nav-links a:hover { color:var(--text-bright); }
@@ -82,7 +81,14 @@
         .cta-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:400px; height:400px; background:radial-gradient(circle,rgba(255,255,255,0.015) 0%,transparent 70%); pointer-events:none; }
         .cta-section h2 { font-size:2rem; margin-bottom:1rem; color:var(--text-bright); font-weight:300; }
         .cta-section p { font-size:1rem; margin-bottom:2.5rem; color:var(--text-dim); }
-        .orbital-ring { position:absolute; border:1px solid rgba(255,255,255,0.04); border-radius:50%; pointer-events:none; }
+        .orbit-container { position:relative; width:200px; height:200px; margin:0 auto 2rem; }
+        .orbit-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:8px; height:8px; background:var(--text-dim); border-radius:50%; }
+        .orbit-path { position:absolute; top:0; left:0; width:100%; height:100%; border:1px solid rgba(255,255,255,0.06); border-radius:50%; animation:orbit 20s linear infinite; }
+        .orbit-path:nth-child(2) { width:70%; height:70%; top:15%; left:15%; animation-duration:14s; animation-direction:reverse; }
+        .orbit-path:nth-child(3) { width:40%; height:40%; top:30%; left:30%; animation-duration:10s; }
+        .orbit-dot { position:absolute; width:4px; height:4px; background:rgba(255,255,255,0.4); border-radius:50%; top:0; left:50%; margin-left:-2px; margin-top:-2px; }
+        .geo-divider { text-align:center; padding:1rem 0; }
+        .geo-divider svg { width:60px; height:2px; opacity:0.3; }
         footer { padding:3rem 5%; background:var(--surface); border-top:1px solid var(--border); }
         .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
         .footer-col h4 { color:var(--text-dim); margin-bottom:1rem; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; }
@@ -91,18 +97,8 @@
         .footer-bottom { text-align:center; color:rgba(255,255,255,0.15); font-size:0.75rem; max-width:1200px; margin:0 auto; letter-spacing:0.04em; }
         @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
         @keyframes orbit { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
-        @keyframes pulse { 0%,100% { opacity:0.3; } 50% { opacity:0.6; } }
-        .orbit-container { position:relative; width:200px; height:200px; margin:0 auto 2rem; }
-        .orbit-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:8px; height:8px; background:var(--text-dim); border-radius:50%; }
-        .orbit-path { position:absolute; top:0; left:0; width:100%; height:100%; border:1px solid rgba(255,255,255,0.06); border-radius:50%; animation:orbit 20s linear infinite; }
-        .orbit-path:nth-child(2) { width:70%; height:70%; top:15%; left:15%; animation-duration:14s; animation-direction:reverse; }
-        .orbit-path:nth-child(3) { width:40%; height:40%; top:30%; left:30%; animation-duration:10s; }
-        .orbit-dot { position:absolute; width:4px; height:4px; background:rgba(255,255,255,0.4); border-radius:50%; top:0; left:50%; margin-left:-2px; margin-top:-2px; }
-        /* Geometric divider */
-        .geo-divider { text-align:center; padding:1rem 0; }
-        .geo-divider svg { width:60px; height:2px; opacity:0.3; }
         @media (max-width:768px) {
-            .hero h1 { font-size:2.2rem; } .section-title { font-size:1.8rem; } .nav-links { display:none; } .logo img { height:70px; } .product-cards { grid-template-columns:1fr; }
+            .hero h1 { font-size:2.2rem; } .section-title { font-size:1.8rem; } .nav-links { display:none; } .product-cards { grid-template-columns:1fr; }
         }
     </style>
 </head>
@@ -111,7 +107,12 @@
     <div class="content">
         <header>
             <nav>
-                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations"></a></div>
+                <div class="logo">
+                    <a href="index.html">
+                        <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/><circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.3"/><line x1="12" y1="14" x2="20" y2="14" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><line x1="12" y1="20" x2="20" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/><line x1="12" y1="26" x2="26" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="0.6"/><text x="20" y="11" text-anchor="middle" fill="#e8e8f0" font-size="8" font-weight="400" font-family="system-ui" letter-spacing="1">W3I</text></svg>
+                        <div><span class="logo-text">W3I</span><br><span class="logo-sub">Web Three Innovations</span></div>
+                    </a>
+                </div>
                 <ul class="nav-links">
                     <li class="dropdown">
                         <span class="dropdown-toggle">Products <span class="dropdown-arrow">▾</span></span>

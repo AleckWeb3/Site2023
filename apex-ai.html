@@ -11,9 +11,12 @@
         body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
         #stars-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
         .content{position:relative;z-index:1}
-        header{padding:1.5rem 5%;background:rgba(5,5,8,0.85);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+        header{padding:1.2rem 5%;background:rgba(5,5,8,0.85);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
         nav{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto}
-        .logo img{height:120px;width:auto;filter:invert(0.9) brightness(1.3)}
+        .logo a{display:flex;align-items:center;text-decoration:none;gap:0.6rem}
+        .logo svg{width:40px;height:40px;flex-shrink:0}
+        .logo-text{font-size:1.3rem;font-weight:300;color:var(--text-bright);letter-spacing:0.15em}
+        .logo-sub{font-size:0.55rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.2em}
         .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
         .nav-links a,.dropdown-toggle{color:var(--text-dim);text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.02em;transition:color .3s;text-transform:uppercase;cursor:pointer}
         .nav-links a:hover,.dropdown-toggle:hover{color:var(--text-bright)}
@@ -31,11 +34,11 @@
         .flow-section{padding:4rem 5%;max-width:1200px;margin:0 auto}
         .flow-section h2{font-size:1.8rem;color:var(--text-bright);font-weight:300;margin-bottom:.5rem}
         .flow-section .desc{color:var(--text-dim);margin-bottom:2.5rem;font-size:.95rem;line-height:1.7}
-        .flow-track{display:flex;gap:.75rem;overflow-x:auto;padding-bottom:1rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+        .flow-track{display:flex;gap:.75rem;overflow-x:auto;padding-bottom:1rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
         .flow-step{flex:0 0 280px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.8rem;position:relative;transition:all .3s}
         .flow-step:hover{border-color:var(--border-hover);background:var(--surface-hover)}
         .flow-step .step-marker{font-size:.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
-        .flow-step .step-marker::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--border);display:inline-block}
+        .flow-step .step-marker::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--border)}
         .flow-step h4{color:var(--text-bright);font-weight:500;font-size:1rem;margin-bottom:.5rem}
         .flow-step p{color:var(--text-dim);font-size:.85rem;line-height:1.65}
         .flow-connector{display:flex;align-items:center;justify-content:center;flex:0 0 30px;color:var(--border);font-size:1.2rem}
@@ -58,8 +61,7 @@
         .footer-col a{display:block;color:rgba(255,255,255,.3);text-decoration:none;padding:.25rem 0;font-size:.85rem}
         .footer-col a:hover{color:var(--text-bright)}
         .footer-bottom{text-align:center;color:rgba(255,255,255,.15);font-size:.75rem;max-width:1200px;margin:0 auto}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        @media(max-width:768px){.hero h1{font-size:2rem}.nav-links{display:none}.logo img{height:70px}.grid-2,.grid-3{grid-template-columns:1fr}.flow-track{flex-direction:column}.flow-connector{display:none}}
+        @media(max-width:768px){.hero h1{font-size:2rem}.nav-links{display:none}.grid-2,.grid-3{grid-template-columns:1fr}.flow-track{flex-direction:column}.flow-connector{display:none}}
     </style>
 </head>
 <body>
@@ -67,7 +69,12 @@
     <div class="content">
         <header>
             <nav>
-                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="W3I"></a></div>
+                <div class="logo">
+                    <a href="index.html">
+                        <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/><circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.3"/><line x1="12" y1="14" x2="20" y2="14" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><line x1="12" y1="20" x2="20" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/><line x1="12" y1="26" x2="26" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="0.6"/><text x="20" y="11" text-anchor="middle" fill="#e8e8f0" font-size="8" font-weight="400" font-family="system-ui" letter-spacing="1">W3I</text></svg>
+                        <div><span class="logo-text">W3I</span><br><span class="logo-sub">Web Three Innovations</span></div>
+                    </a>
+                </div>
                 <ul class="nav-links">
                     <li class="dropdown"><span class="dropdown-toggle">Products <span class="dropdown-arrow">▾</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="exagent.html">Exagent</a></li></ul></li>
                     <li><a href="index.html#about">Approach</a></li><li><a href="index.html#faq">FAQ</a></li>
@@ -75,69 +82,42 @@
                 <a href="contact.html" class="btn">Contact</a>
             </nav>
         </header>
-
         <section class="hero">
             <span class="tag">Sales Automation</span>
             <h1>Apex AI</h1>
             <p>Top-of-funnel sales automation that researches target companies, qualifies them against your rules, prepares approved outreach, handles replies, and delivers qualified leads — all under your control.</p>
         </section>
-
         <section class="flow-section">
             <h2>How it works</h2>
             <p class="desc">Eight stages from target company to qualified lead handoff. One continuous, controlled workflow.</p>
             <div class="flow-track">
-                <div class="flow-step"><div class="step-marker">01 Setup</div><h4>Sales Plan Configuration</h4><p>Define company and offer, target rules, buyer roles, Message guidance, follow-up plans, email connection, sending limits, and lead handoff — once per campaign.</p></div>
+                <div class="flow-step"><div class="step-marker">01 Setup</div><h4>Sales Plan Configuration</h4><p>Define company and offer, target rules, buyer roles, message guidance, follow-up plans, email connection, sending limits, and lead handoff — once per campaign.</p></div>
                 <div class="flow-connector">→</div>
                 <div class="flow-step"><div class="step-marker">02 Input</div><h4>Add Target Companies</h4><p>Add one company, upload a list, or let Apex find targets under your active sales plan.</p></div>
                 <div class="flow-connector">→</div>
-                <div class="flow-step"><div class="step-marker">03 Research</div><h4>Company Fit Analysis</h4><p>Research each company, record sources, and apply your Company Fit rules. Dimensions, weights, thresholds, and hard exclusions — deterministic scoring.</p></div>
+                <div class="flow-step"><div class="step-marker">03 Research</div><h4>Company Fit Analysis</h4><p>Research each company, record sources, and apply your Company Fit rules with deterministic scoring.</p></div>
                 <div class="flow-connector">→</div>
-                <div class="flow-step"><div class="step-marker">04 Contact</div><h4>Contact Discovery</h4><p>Find one current contact in an approved role with valid email. If unverifiable, try another role within limits or defer the company.</p></div>
+                <div class="flow-step"><div class="step-marker">04 Contact</div><h4>Contact Discovery</h4><p>Find one current contact in an approved role with valid email. If unverifiable, try another role or defer.</p></div>
                 <div class="flow-connector">→</div>
-                <div class="flow-step"><div class="step-marker">05 Message</div><h4>Outreach Preparation</h4><p>Prepare first and follow-up messages under your sales plan. Edit any message or request a new version. Only true exceptions need your review.</p></div>
+                <div class="flow-step"><div class="step-marker">05 Message</div><h4>Outreach Preparation</h4><p>Prepare messages under your sales plan. Edit any message or request a new version. Only exceptions need your review.</p></div>
                 <div class="flow-connector">→</div>
-                <div class="flow-step"><div class="step-marker">06 Launch</div><h4>Approve & Start</h4><p>One approval activates the complete plan. Outreach runs through Microsoft 365 or Classic Outlook with independent sending controls, schedules, and limits.</p></div>
+                <div class="flow-step"><div class="step-marker">06 Launch</div><h4>Approve & Start</h4><p>One approval activates the complete plan. Runs through Microsoft 365 or Classic Outlook with sending controls.</p></div>
                 <div class="flow-connector">→</div>
                 <div class="flow-step"><div class="step-marker">07 Reply</div><h4>Handle Replies</h4><p>Classify replies, handle opt-outs, stop follow-up after response. Never chase someone who already engaged.</p></div>
                 <div class="flow-connector">→</div>
-                <div class="flow-step"><div class="step-marker">08 Deliver</div><h4>Qualified Lead Handoff</h4><p>Download CSV or JSON and import into your sales system. Your reps receive leads — they don't use Apex.</p></div>
+                <div class="flow-step"><div class="step-marker">08 Deliver</div><h4>Qualified Lead Handoff</h4><p>Download CSV or JSON and import into your sales system. Your reps receive leads.</p></div>
             </div>
         </section>
-
         <div class="section-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width=".5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity=".5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width=".5"/></svg></div>
-
         <section class="flow-section">
             <h2>Capabilities</h2>
             <p class="desc">Designed for a specific workflow. Here's what that looks like.</p>
             <div class="grid-2">
-                <div class="info-card">
-                    <h4>Capabilities</h4>
-                    <ul>
-                        <li>Research and qualify target companies with custom rules</li>
-                        <li>Find contacts in approved buyer roles</li>
-                        <li>Prepare approved outreach messages</li>
-                        <li>Handle replies and stop follow-up after response</li>
-                        <li>Deliver qualified leads via CSV/JSON export</li>
-                        <li>Full audit trail on every AI action and human decision</li>
-                        <li>Isolated client environments with encrypted access</li>
-                    </ul>
-                </div>
-                <div class="info-card">
-                    <h4>Built for</h4>
-                    <ul>
-                        <li>Sales Directors and program owners managing top-of-funnel</li>
-                        <li>One controlled workflow — target research through qualified lead handoff</li>
-                        <li>Microsoft 365 and Classic Outlook email integration</li>
-                        <li>Full audit trail on every AI action and human decision</li>
-                        <li>Isolated client environments with encrypted access</li>
-                        <li>CSV or JSON lead export into your existing sales system</li>
-                    </ul>
-                </div>
+                <div class="info-card"><h4>Capabilities</h4><ul><li>Research and qualify target companies with custom rules</li><li>Find contacts in approved buyer roles</li><li>Prepare approved outreach messages</li><li>Handle replies and stop follow-up after response</li><li>Deliver qualified leads via CSV/JSON export</li><li>Full audit trail on every AI action and human decision</li><li>Isolated client environments with encrypted access</li></ul></div>
+                <div class="info-card"><h4>Built for</h4><ul><li>Sales Directors and program owners managing top-of-funnel</li><li>One controlled workflow — target research through qualified lead handoff</li><li>Microsoft 365 and Classic Outlook email integration</li><li>Full audit trail on every AI action and human decision</li><li>Isolated client environments with encrypted access</li><li>CSV or JSON lead export into your existing sales system</li></ul></div>
             </div>
         </section>
-
         <div class="section-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width=".5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity=".5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width=".5"/></svg></div>
-
         <section class="flow-section">
             <h2>Architecture</h2>
             <p class="desc">Built for trust and isolation.</p>
@@ -147,13 +127,11 @@
                 <div class="info-card"><h4>Audit Trail</h4><p>Records for access grants, revocations, sensitive activity, lifecycle actions, and sales-development events. Critical evidence protected from normal deletion.</p></div>
             </div>
         </section>
-
         <section class="cta-section">
             <h2>Interested in Apex AI?</h2>
             <p>Built for Sales Directors and program owners who want controlled top-of-funnel automation.</p>
             <a href="contact.html" class="btn">Get In Touch</a>
         </section>
-
         <footer>
             <div class="footer-grid">
                 <div class="footer-col"><h4>Products</h4><a href="apex-ai.html">Apex AI</a><a href="exagent.html">Exagent</a></div>
