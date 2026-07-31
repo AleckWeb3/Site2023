@@ -49,13 +49,13 @@
 
         /* Header */
         header {
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             backdrop-filter: blur(10px);
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.95);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
         }
 
         nav {
@@ -73,7 +73,7 @@
         }
 
         .logo img {
-            height: 50px;
+            height: 150px;
             width: auto;
         }
 
@@ -94,11 +94,15 @@
         }
 
         .nav-links a {
-            color: var(--text-color);
+            color: #1a1a2e;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
 
         .nav-links > li > a::after {
@@ -126,7 +130,7 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            color: var(--text-color);
+            color: #1a1a2e;
             font-weight: 500;
         }
 
@@ -426,7 +430,7 @@
             }
 
             .logo img {
-                height: 40px;
+                height: 80px;
             }
 
             .tools-grid,
