@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Apex AI - Document review automation for operations teams. Process contracts, invoices, and reports with auditable AI assistance.">
-    <title>Apex AI | Document Review Automation | Web Three Innovations</title>
+    <meta name="description" content="Exagent — Intelligent workflow orchestration by Web Three Innovations. Connect your tools and automate repetitive processes with auditable AI.">
+    <title>Exagent | Workflow Orchestration | Web Three Innovations</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
-        :root { --primary-color:#00d4ff; --secondary-color:#0066ff; --accent-color:#ff00ff; --text-color:#ffffff; --dark-bg:#0a0a1a; --card-bg:rgba(15,15,35,0.85); --glass-bg:rgba(255,255,255,0.05); }
+        :root { --primary-color:#00d4ff; --secondary-color:#0066ff; --accent-color:#ff00ff; --text-color:#ffffff; --dark-bg:#0a0a1a; --card-bg:rgba(15,15,35,0.85); }
         body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:var(--dark-bg); color:var(--text-color); overflow-x:hidden; line-height:1.6; min-height:100vh; }
         #stars-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; background:linear-gradient(135deg,#0a0a1a 0%,#1a0a2e 50%,#0a0a1a 100%); }
         .content { position:relative; z-index:1; }
         header { padding:1.5rem 5%; backdrop-filter:blur(10px); background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(0,212,255,0.3); }
         nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
-        .logo { display:flex; align-items:center; gap:1rem; }
         .logo img { height:150px; width:auto; }
         .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
         .nav-links a { color:#1a1a2e; text-decoration:none; font-weight:500; transition:color 0.3s; position:relative; }
@@ -24,16 +23,14 @@
         .dropdown-toggle { cursor:pointer; display:flex; align-items:center; gap:0.3rem; color:#1a1a2e; font-weight:500; }
         .dropdown-arrow { font-size:0.7rem; transition:transform 0.3s; }
         .dropdown:hover .dropdown-arrow { transform:rotate(180deg); }
-        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(10px); background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:10px; padding:0.5rem 0; min-width:180px; opacity:0; visibility:hidden; transition:all 0.3s; list-style:none; z-index:101; }
+        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(10px); background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:10px; padding:0.5rem 0; min-width:200px; opacity:0; visibility:hidden; transition:all 0.3s; list-style:none; z-index:101; }
         .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(5px); }
         .dropdown-menu li { padding:0; }
         .dropdown-menu a { display:block; padding:0.7rem 1.5rem; color:var(--text-color); text-decoration:none; font-weight:500; transition:all 0.3s; white-space:nowrap; }
         .dropdown-menu a:hover { background:rgba(0,212,255,0.1); color:var(--primary-color); }
         .dropdown-menu a::after { display:none; }
-        .cta-button { padding:0.8rem 2rem; background:linear-gradient(135deg,var(--primary-color),var(--secondary-color)); color:white; border:none; border-radius:50px; font-weight:600; cursor:pointer; transition:transform 0.3s,box-shadow 0.3s; text-decoration:none; display:inline-block; }
+        .cta-button { padding:0.8rem 2rem; background:linear-gradient(135deg,var(--primary-color),var(--secondary-color)); color:white; border:none; border-radius:50px; font-weight:600; cursor:pointer; transition:transform 0.3s; text-decoration:none; display:inline-block; }
         .cta-button:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
-        .cta-secondary { padding:0.8rem 2rem; background:transparent; color:var(--primary-color); border:2px solid var(--primary-color); border-radius:50px; font-weight:600; cursor:pointer; transition:all 0.3s; text-decoration:none; display:inline-block; }
-        .cta-secondary:hover { background:rgba(0,212,255,0.1); }
         .page-hero { min-height:40vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; }
         .page-hero h1 { font-size:3rem; margin-bottom:1rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
         .page-hero p { font-size:1.2rem; color:rgba(255,255,255,0.8); max-width:650px; }
@@ -45,15 +42,16 @@
         .section li { margin-bottom:0.5rem; }
         .grid-2 { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; margin-top:2rem; }
         .info-card { background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:2rem; }
-        .info-card h4 { color:var(--primary-color); margin-bottom:0.8rem; font-size:1.1rem; }
+        .info-card h4 { color:var(--secondary-color); margin-bottom:0.8rem; font-size:1.1rem; }
         .info-card p { color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.7; }
+        .tag { display:inline-block; padding:0.3rem 0.8rem; background:rgba(0,212,255,0.15); border:1px solid rgba(0,212,255,0.3); border-radius:20px; font-size:0.8rem; color:var(--primary-color); margin-bottom:1rem; }
         .cta-section { padding:5rem 5%; text-align:center; }
         .cta-section h2 { font-size:2.2rem; margin-bottom:1rem; }
         .cta-section p { font-size:1.1rem; margin-bottom:2rem; color:rgba(255,255,255,0.8); }
-        footer { padding:3rem 5%; background:var(--glass-bg); backdrop-filter:blur(10px); border-top:1px solid rgba(0,212,255,0.1); }
+        footer { padding:3rem 5%; background:var(--card-bg); backdrop-filter:blur(10px); border-top:1px solid rgba(0,212,255,0.1); }
         .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
         .footer-col h4 { color:var(--primary-color); margin-bottom:1rem; font-size:1rem; }
-        .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; transition:color 0.3s; }
+        .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; }
         .footer-col a:hover { color:var(--primary-color); }
         .footer-bottom { text-align:center; color:rgba(255,255,255,0.4); font-size:0.85rem; max-width:1200px; margin:0 auto; }
         @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } .grid-2 { grid-template-columns:1fr; } }
@@ -81,36 +79,39 @@
         </header>
 
         <section class="page-hero">
-            <div><h1>Apex AI</h1><p>Document review automation for operations teams who need speed, accuracy, and control.</p></div>
+            <div><span class="tag">Workflow Automation</span><h1>Exagent</h1><p>Intelligent workflow orchestration that connects your tools and automates repetitive processes — freeing your team to focus on higher-value work.</p></div>
         </section>
 
         <section class="section">
-            <h2>What Apex AI Does</h2>
-            <p>Apex AI processes structured and semi-structured business documents — contracts, invoices, compliance reports, vendor agreements, and operational forms — extracting key data, flagging anomalies, and preparing results for human review. It reduces manual review time while maintaining full human oversight.</p>
+            <h2>What Exagent Does</h2>
+            <p>Exagent connects your existing tools — email, CRMs, databases, document systems, and APIs — into automated workflows. Instead of manually moving data between systems, you define the logic once and let Exagent handle the routing, transformation, and handoffs.</p>
             <div class="grid-2">
-                <div class="info-card"><h4>📄 Document Classification</h4><p>Automatically identifies document type, extracts relevant fields, and routes to the appropriate workflow.</p></div>
-                <div class="info-card"><h4>🔍 Anomaly Detection</h4><p>Flags missing fields, unusual values, and inconsistencies for human review — never auto-approves.</p></div>
-                <div class="info-card"><h4>📊 Data Extraction</h4><p>Pulls structured data from unstructured documents. Output is verifiable and exportable.</p></div>
-                <div class="info-card"><h4>📝 Audit Trail</h4><p>Every extraction, suggestion, and human decision is logged with timestamps and rationale.</p></div>
+                <div class="info-card"><h4>🔗 Multi-Tool Connectors</h4><p>Pre-built connectors for common business tools. Connect your stack without writing custom integration code.</p></div>
+                <div class="info-card"><h4>🔄 Conditional Routing</h4><p>Define rules-based workflows: "If this invoice is over $5K, route it to manager approval. If approved, push to accounting."</p></div>
+                <div class="info-card"><h4>📊 Process Visibility</h4><p>Track every workflow run. See what triggered, what completed, what's waiting, and where bottlenecks are forming.</p></div>
+                <div class="info-card"><h4>🧩 Human-in-the-Loop Steps</h4><p>When a decision needs human input, Exagent pauses the workflow and notifies the right person — with full context.</p></div>
             </div>
         </section>
 
         <section class="section" style="background:linear-gradient(180deg,transparent 0%,rgba(0,212,255,0.05) 50%,transparent 100%);">
-            <h2>What Apex AI Can & Cannot Do</h2>
+            <h2>Example Use Cases</h2>
             <div class="grid-2">
-                <div class="info-card"><h4>✅ Can Do</h4><p>Process structured and semi-structured business documents. Extract key fields with confidence scoring. Flag anomalies and escalate uncertain cases. Maintain full audit trail. Integrate with existing document workflows via API.</p></div>
-                <div class="info-card"><h4>❌ Cannot Do</h4><p>Replace human judgment for high-stakes decisions. Guarantee 100% accuracy on unfamiliar document formats. Auto-approve documents without human review. Process handwritten or heavily unstructured content reliably (yet).</p></div>
+                <div class="info-card"><h4>📬 Invoice Processing</h4><p>Invoice arrives via email → extracted by Apex AI → Exagent routes to approver → pushes to accounting system → archives document. All tracked.</p></div>
+                <div class="info-card"><h4>👋 Client Onboarding</h4><p>New client form submitted → Exagent creates CRM record → triggers welcome email → assigns onboarding tasks → notifies account manager.</p></div>
+                <div class="info-card"><h4>📋 Compliance Reviews</h4><p>Document processed → Exagent checks against rules → routes to compliance officer if flagged → logs approval → stores audit trail.</p></div>
+                <div class="info-card"><h4>🔄 Cross-System Sync</h4><p>Data entered in one system → Exagent transforms and syncs to another → validates both sides match → alerts if discrepancies found.</p></div>
             </div>
         </section>
 
         <section class="section">
-            <h2>How Accuracy Is Measured</h2>
-            <p>We track accuracy per task category (extraction, classification, flagging). Every AI output includes a confidence score. When the system is uncertain, it escalates rather than providing a low-confidence answer. Accuracy metrics are shared with customers and reviewed regularly. We encourage pilot testing with your own documents — it's the only way to validate performance for your specific use case.</p>
+            <h2>How It Works with Apex AI</h2>
+            <p>Exagent pairs naturally with Apex AI. Apex AI handles document processing and extraction — Exagent takes those results and routes them through your workflows. Together, they form a complete automation pipeline from document intake to downstream action.</p>
+            <p>But Exagent also works standalone with any tool that has an API, a webhook, or email integration.</p>
         </section>
 
         <section class="cta-section">
-            <h2>See If Apex AI Fits Your Workflow</h2>
-            <p>Share your document type and volume — we'll tell you honestly if Apex AI is a good fit.</p>
+            <h2>Want to See Exagent in Action?</h2>
+            <p>Tell us about your workflow and we'll show you how Exagent can automate it.</p>
             <a href="contact.html" class="cta-button">Request Early Access</a>
         </section>
 
@@ -123,14 +124,6 @@
             <div class="footer-bottom"><p>&copy; 2026 Web Three Innovations. All Rights Reserved.</p></div>
         </footer>
     </div>
-
-    <script>
-        const c=document.getElementById('stars-canvas'),ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;
-        class S{constructor(){this.reset();this.y=Math.random()*c.height}reset(){this.x=Math.random()*c.width;this.y=-10;this.size=Math.random()*2+0.5;this.speed=Math.random()*0.5+0.2;this.opacity=Math.random()*0.5+0.5;this.color=Math.random()>0.5?'#00d4ff':'#ffffff'}update(){if(this.y>c.height)this.reset();this.y+=this.speed}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.opacity;ctx.fill();ctx.globalAlpha=1}}
-        class C{constructor(a,b){this.a=a;this.b=b}draw(){let d=Math.hypot(this.a.x-this.b.x,this.a.y-this.b.y);if(d<150){ctx.beginPath();ctx.moveTo(this.a.x,this.a.y);ctx.lineTo(this.b.x,this.b.y);ctx.strokeStyle='#00d4ff';ctx.globalAlpha=(1-d/150)*0.2;ctx.lineWidth=0.5;ctx.stroke();ctx.globalAlpha=1}}}
-        let s=[];for(let i=0;i<150;i++)s.push(new S());
-        function A(){ctx.fillStyle='rgba(10,10,26,0.1)';ctx.fillRect(0,0,c.width,c.height);s.forEach(t=>{t.update();t.draw()});for(let i=0;i<s.length;i++)for(let j=i+1;j<s.length;j++)new C(s[i],s[j]).draw();requestAnimationFrame(A)}A();
-        window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight});
-    </script>
+    <script>const c=document.getElementById('stars-canvas'),ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;class S{constructor(){this.reset();this.y=Math.random()*c.height}reset(){this.x=Math.random()*c.width;this.y=-10;this.size=Math.random()*2+0.5;this.speed=Math.random()*0.5+0.2;this.opacity=Math.random()*0.5+0.5;this.color=Math.random()>0.5?'#00d4ff':'#ffffff'}update(){if(this.y>c.height)this.reset();this.y+=this.speed}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.opacity;ctx.fill();ctx.globalAlpha=1;ctx.beginPath();ctx.moveTo(this.x,this.pastY||this.y-this.speed);ctx.lineTo(this.x,this.y);ctx.strokeStyle=this.color;ctx.globalAlpha=this.opacity*0.3;ctx.lineWidth=this.size;ctx.stroke();ctx.globalAlpha=1}}class C{constructor(a,b){this.a=a;this.b=b}draw(){let d=Math.hypot(this.a.x-this.b.x,this.a.y-this.b.y);if(d<150){ctx.beginPath();ctx.moveTo(this.a.x,this.a.y);ctx.lineTo(this.b.x,this.b.y);ctx.strokeStyle='#00d4ff';ctx.globalAlpha=(1-d/150)*0.2;ctx.lineWidth=0.5;ctx.stroke();ctx.globalAlpha=1}}}let s=[];for(let i=0;i<150;i++)s.push(new S());(function A(){ctx.fillStyle='rgba(10,10,26,0.1)';ctx.fillRect(0,0,c.width,c.height);s.forEach(t=>{t.pastY=t.y;t.update();t.draw()});for(let i=0;i<s.length;i++)for(let j=i+1;j<s.length;j++)new C(s[i],s[j]).draw();requestAnimationFrame(A)})();window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight});</script>
 </body>
 </html>
