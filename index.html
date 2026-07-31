@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Web Three Innovations - Building powerful software solutions for modern businesses">
-    <title>Web Three Innovations | Software Solutions</title>
+    <meta name="description" content="Apex AI helps operations teams reduce manual review time by automating document processing with auditable AI. Built by Web Three Innovations.">
+    <title>Apex AI | Automate Document Review for Operations Teams | Web Three Innovations</title>
     <style>
         * {
             margin: 0;
@@ -30,7 +30,6 @@
             line-height: 1.6;
         }
 
-        /* Animated Background */
         #stars-canvas {
             position: fixed;
             top: 0;
@@ -41,7 +40,6 @@
             background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
         }
 
-        /* Content Container */
         .content {
             position: relative;
             z-index: 1;
@@ -75,15 +73,6 @@
         .logo img {
             height: 150px;
             width: auto;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .nav-links {
@@ -120,7 +109,7 @@
             width: 100%;
         }
 
-        /* Dropdown Menu */
+        /* Dropdown */
         .dropdown {
             position: relative;
         }
@@ -208,7 +197,24 @@
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
-        /* Hero Section */
+        .cta-secondary {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* Hero */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -219,64 +225,71 @@
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 850px;
             animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(135deg, var(--primary-color), white);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
             color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Section Styles */
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-trust {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .section-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--primary-color), white);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* Tools Section */
-        .tools {
-            padding: 8rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+        .section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .tools-cta {
-            padding: 8rem 5%;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.05) 50%, transparent 100%);
-        }
-
-        .tools-grid-single {
+        /* Cards */
+        .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .card {
@@ -300,12 +313,12 @@
         }
 
         .card-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
 
         .card h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--primary-color);
         }
@@ -315,58 +328,91 @@
             line-height: 1.8;
         }
 
-        .tool-card {
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 5%;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.05) 50%, transparent 100%);
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .step {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(0, 212, 255, 0.15);
             border-radius: 15px;
             padding: 2rem;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: block;
-            color: inherit;
+            transition: transform 0.3s;
         }
 
-        .tool-card:hover {
+        .step:hover {
             transform: translateY(-5px);
-            border-color: var(--secondary-color);
-            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
         }
 
-        .tool-card h4 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
         }
 
-        .tool-card p {
+        .step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .step p {
             color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
         }
 
-        .tool-card .coming-soon {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: rgba(255, 0, 255, 0.15);
-            border: 1px solid rgba(255, 0, 255, 0.3);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            margin-top: 1rem;
+        .step-arrow {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
         }
 
         /* CTA Section */
         .cta-section {
-            padding: 8rem 5%;
+            padding: 6rem 5%;
             text-align: center;
         }
 
         .cta-section h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .cta-section p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
             color: rgba(255, 255, 255, 0.8);
         }
@@ -374,14 +420,44 @@
         /* Footer */
         footer {
             padding: 3rem 5%;
-            text-align: center;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(0, 212, 255, 0.1);
         }
 
-        footer p {
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-col a {
+            display: block;
             color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* Animations */
@@ -396,24 +472,13 @@
             }
         }
 
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
-            .hero p {
+            .hero .subtitle {
                 font-size: 1.1rem;
             }
 
@@ -425,35 +490,32 @@
                 display: none;
             }
 
-            .logo-text {
-                display: none;
-            }
-
             .logo img {
                 height: 80px;
             }
 
-            .tools-grid,
-            .tools-grid-single {
+            .card-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Star Background -->
     <canvas id="stars-canvas"></canvas>
 
-    <!-- Content -->
     <div class="content">
         <!-- Header -->
         <header>
             <nav>
                 <div class="logo">
-                    <img src="W3ILogo.png" alt="Web Three Innovations Logo">
+                    <a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations Logo"></a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
                     <li class="dropdown">
                         <span class="dropdown-toggle">
                             Solutions
@@ -464,81 +526,168 @@
                             <li><a href="tbd.html">TBD</a></li>
                         </ul>
                     </li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="about.html">About</a></li>
                 </ul>
-                <a href="mailto:info@webthreeinnovations.com" class="cta-button">Get Started</a>
+                <a href="contact.html" class="cta-button">Request Early Access</a>
             </nav>
         </header>
 
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="hero">
             <div class="hero-content">
-                <h1>Powerful Software, Built for You</h1>
-                <p>We build practical, high-impact software tools that solve real problems. No fluff—just solutions that work.</p>
-                <a href="#tools" class="cta-button">Explore Our Tools</a>
+                <h1>Cut Manual Document Review Time by Over 60%</h1>
+                <p class="subtitle">Apex AI helps operations teams process and review documents with auditable AI assistance — not black-box automation.</p>
+                <div class="hero-ctas">
+                    <a href="contact.html" class="cta-button">Request Early Access</a>
+                    <a href="#how-it-works" class="cta-secondary">How It Works</a>
+                </div>
+                <p class="hero-trust">Built by Web Three Innovations · Private by design · Human-in-the-loop</p>
             </div>
         </section>
 
-        <!-- Philosophy Section -->
-        <section class="tools" id="philosophy">
-            <h2 class="section-title">How We Build Software</h2>
-            <div class="tools-grid">
+        <!-- Who It's For -->
+        <section class="section" id="who">
+            <h2 class="section-title">Who Apex AI Helps</h2>
+            <p class="section-subtitle">Built for teams that spend hours reviewing documents, contracts, and reports manually.</p>
+            <div class="card-grid">
                 <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Rapid Development</h3>
-                    <p>We move fast and ship often. Our tools are built iteratively with continuous feedback, so you get value from day one—not months down the road.</p>
+                    <div class="card-icon">📋</div>
+                    <h3>Operations Teams</h3>
+                    <p>Reduce time spent on document review, extraction, and classification. Get consistent results with audit trails.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">🎯</div>
-                    <h3>User-Centered Design</h3>
-                    <p>Every tool we build starts with the user. We focus on intuitive interfaces and seamless experiences that people actually want to use.</p>
+                    <div class="card-icon">🔍</div>
+                    <h3>Compliance & Legal</h3>
+                    <p>Speed up contract review and regulatory document checks. The AI flags issues — you make the final call.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Business Owners</h3>
+                    <p>Process vendor agreements, onboarding documents, and reports without adding headcount.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works" id="how-it-works">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Three steps. Transparent at every stage.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Upload & Classify</h4>
+                    <p>Upload documents. Apex AI identifies document type, extracts key fields, and flags items needing review.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>AI Processing</h4>
+                    <p>The AI analyzes content against your rules. When it's uncertain, it escalates — not guesses.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Human Review</h4>
+                    <p>You review findings, override or approve outputs, and export results. Every decision is logged.</p>
+                </div>
+            </div>
+            <p style="margin-top:2rem;">
+                <a href="how-it-works.html" class="cta-secondary">See Detailed Process</a>
+            </p>
+        </section>
+
+        <!-- Trust -->
+        <section class="section" id="trust">
+            <h2 class="section-title">Built for Trust</h2>
+            <p class="section-subtitle">We take data handling, accuracy, and accountability seriously.</p>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">👤</div>
+                    <h3>Human-in-the-Loop</h3>
+                    <p>The AI never takes autonomous action. It suggests, flags, and quantifies uncertainty. You approve or override every decision.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">🔒</div>
-                    <h3>Reliable & Secure</h3>
-                    <p>Our software is built on solid foundations. Security, performance, and reliability aren't afterthoughts—they're baked in from the start.</p>
+                    <h3>Your Data Stays Yours</h3>
+                    <p>Customer data is not used to train shared models. Data is encrypted in transit and at rest, with configurable retention policies.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📝</div>
+                    <h3>Full Audit Trail</h3>
+                    <p>Every AI suggestion, every human override, every output is logged. You can trace any result back to its source.</p>
                 </div>
             </div>
+            <p style="text-align:center; margin-top:2rem;">
+                <a href="security.html" class="cta-secondary">Read Our Security Policy</a>
+            </p>
         </section>
 
-        <!-- Tools/Solutions Section -->
-        <section class="tools-cta" id="tools">
-            <h2 class="section-title">Our Solutions</h2>
-            <div class="tools-grid-single">
-                <a href="apex-ai.html" class="tool-card">
-                    <h4>🤖 Apex AI</h4>
-                    <p>Intelligent automation and AI-powered tools to supercharge your workflows and decision-making.</p>
-                </a>
-                <a href="tbd.html" class="tool-card">
-                    <h4>🚧 TBD</h4>
-                    <p>Something exciting is in the works. Stay tuned for our next software solution.</p>
-                    <span class="coming-soon">Coming Soon</span>
-                </a>
+        <!-- FAQ -->
+        <section class="section" id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h4>What kind of documents can Apex AI process?</h4>
+                <p>Apex AI is designed for structured and semi-structured business documents: contracts, invoices, compliance reports, vendor agreements, and operational forms. It works best with documents that follow predictable patterns.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How accurate is the AI?</h4>
+                <p>Accuracy varies by document type and task. We measure and publish accuracy metrics per task category. For tasks where the AI is uncertain, it flags items for human review rather than guessing. We encourage customers to test with their own documents before deployment.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Does your AI train on my documents?</h4>
+                <p>No. Customer documents are not used to train or improve shared AI models. Your data is isolated to your organization.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How much does it cost?</h4>
+                <p>Pricing depends on document volume and use case. We offer transparent per-document or subscription pricing. Contact us for a quote based on your needs. No hidden fees.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I try it before committing?</h4>
+                <p>Yes. We offer a pilot program where you can test Apex AI with your own documents and workflows. No upfront commitment required.</p>
             </div>
         </section>
 
-        <!-- CTA Section -->
+        <!-- CTA -->
         <section class="cta-section">
-            <h2>Have an Idea?</h2>
-            <p>We're always building. If you have a software need, let's talk.</p>
-            <a href="mailto:info@webthreeinnovations.com" class="cta-button">Contact Us</a>
+            <h2>Ready to Reduce Manual Review?</h2>
+            <p>Tell us about your document workflow and we'll show you what Apex AI can do.</p>
+            <a href="contact.html" class="cta-button">Request Early Access</a>
+            <p style="margin-top:1rem; color: rgba(255,255,255,0.5); font-size:0.9rem;">Or email us: info@webthreeinnovations.com</p>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2026 Web Three Innovations. All Rights Reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="apex-ai.html">Apex AI</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Trust</h4>
+                    <a href="security.html">Security</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Web Three Innovations. All Rights Reserved.</p>
+            </div>
         </footer>
     </div>
 
-    <!-- JavaScript for Animated Background -->
     <script>
-        // Canvas setup
         const canvas = document.getElementById('stars-canvas');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Particle class
         class Star {
             constructor() {
                 this.reset();
@@ -559,10 +708,7 @@
             update() {
                 this.pastY = this.y;
                 this.y += this.speed;
-
-                if (this.y > canvas.height) {
-                    this.reset();
-                }
+                if (this.y > canvas.height) this.reset();
             }
 
             draw() {
@@ -573,7 +719,6 @@
                 ctx.fill();
                 ctx.globalAlpha = 1;
 
-                // Draw trail
                 ctx.beginPath();
                 ctx.moveTo(this.x, this.pastY);
                 ctx.lineTo(this.x, this.y);
@@ -585,7 +730,6 @@
             }
         }
 
-        // Connection lines class
         class Connection {
             constructor(star1, star2) {
                 this.star1 = star1;
@@ -594,7 +738,6 @@
 
             draw() {
                 const distance = Math.hypot(this.star1.x - this.star2.x, this.star1.y - this.star2.y);
-
                 if (distance < 150) {
                     ctx.beginPath();
                     ctx.moveTo(this.star1.x, this.star1.y);
@@ -608,54 +751,34 @@
             }
         }
 
-        // Create stars
         const stars = [];
-        const starCount = 150;
+        for (let i = 0; i < 150; i++) stars.push(new Star());
 
-        for (let i = 0; i < starCount; i++) {
-            stars.push(new Star());
-        }
-
-        // Animation loop
         function animate() {
             ctx.fillStyle = 'rgba(10, 10, 26, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Update and draw stars
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-
-            // Draw connections
+            stars.forEach(star => { star.update(); star.draw(); });
             for (let i = 0; i < stars.length; i++) {
                 for (let j = i + 1; j < stars.length; j++) {
-                    const connection = new Connection(stars[i], stars[j]);
-                    connection.draw();
+                    new Connection(stars[i], stars[j]).draw();
                 }
             }
-
             requestAnimationFrame(animate);
         }
 
         animate();
 
-        // Handle resize
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
