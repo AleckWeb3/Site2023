@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Exagent — Intelligent workflow orchestration by Web Three Innovations. Connect your tools and automate repetitive processes with auditable AI.">
-    <title>Exagent | Workflow Orchestration | Web Three Innovations</title>
+    <meta name="description" content="Exagent — A private command center where groups deploy, control, and verify LLM trading agents across prediction markets, perpetual futures, spot markets, and EVM DEXs.">
+    <title>Exagent | LLM Trading Agent Command Center | Web Three Innovations</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         :root { --primary-color:#00d4ff; --secondary-color:#0066ff; --accent-color:#ff00ff; --text-color:#ffffff; --dark-bg:#0a0a1a; --card-bg:rgba(15,15,35,0.85); }
@@ -33,28 +33,35 @@
         .cta-button:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
         .page-hero { min-height:40vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; }
         .page-hero h1 { font-size:3rem; margin-bottom:1rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .page-hero p { font-size:1.2rem; color:rgba(255,255,255,0.8); max-width:650px; }
+        .page-hero p { font-size:1.2rem; color:rgba(255,255,255,0.8); max-width:700px; }
+        .tag { display:inline-block; padding:0.3rem 0.8rem; background:rgba(0,212,255,0.15); border:1px solid rgba(0,212,255,0.3); border-radius:20px; font-size:0.8rem; color:var(--primary-color); margin-bottom:1rem; }
         .section { padding:4rem 5%; max-width:1100px; margin:0 auto; }
         .section h2 { font-size:2rem; margin-bottom:1.5rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
         .section h3 { font-size:1.3rem; color:var(--primary-color); margin-bottom:0.8rem; }
-        .section p, .section li { color:rgba(255,255,255,0.75); line-height:1.8; font-size:1.05rem; }
+        .section p, .section li { color:rgba(255,255,255,0.75); line-height:1.8; font-size:1.05rem; margin-bottom:1rem; }
         .section ul { padding-left:1.5rem; margin-bottom:1.5rem; }
         .section li { margin-bottom:0.5rem; }
         .grid-2 { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; margin-top:2rem; }
         .info-card { background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:2rem; }
         .info-card h4 { color:var(--secondary-color); margin-bottom:0.8rem; font-size:1.1rem; }
         .info-card p { color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.7; }
-        .tag { display:inline-block; padding:0.3rem 0.8rem; background:rgba(0,212,255,0.15); border:1px solid rgba(0,212,255,0.3); border-radius:20px; font-size:0.8rem; color:var(--primary-color); margin-bottom:1rem; }
+        .workflow-step { background:var(--card-bg); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:1.5rem 2rem; margin-bottom:1rem; display:flex; gap:1.5rem; align-items:flex-start; }
+        .workflow-step .step-num { font-size:2rem; font-weight:700; color:var(--primary-color); min-width:40px; }
+        .workflow-step h4 { color:var(--text-color); margin-bottom:0.3rem; }
+        .workflow-step p { color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.6; margin-bottom:0; }
+        .limitations { background:linear-gradient(180deg,transparent 0%,rgba(0,212,255,0.05) 50%,transparent 100%); }
         .cta-section { padding:5rem 5%; text-align:center; }
         .cta-section h2 { font-size:2.2rem; margin-bottom:1rem; }
         .cta-section p { font-size:1.1rem; margin-bottom:2rem; color:rgba(255,255,255,0.8); }
+        .venue-tag { display:inline-block; padding:0.2rem 0.6rem; background:rgba(0,102,255,0.15); border:1px solid rgba(0,102,255,0.3); border-radius:12px; font-size:0.75rem; color:var(--secondary-color); margin:0.2rem; }
+        .llm-tag { display:inline-block; padding:0.2rem 0.6rem; background:rgba(255,0,255,0.1); border:1px solid rgba(255,0,255,0.2); border-radius:12px; font-size:0.75rem; color:var(--accent-color); margin:0.2rem; }
         footer { padding:3rem 5%; background:var(--card-bg); backdrop-filter:blur(10px); border-top:1px solid rgba(0,212,255,0.1); }
         .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
         .footer-col h4 { color:var(--primary-color); margin-bottom:1rem; font-size:1rem; }
         .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; }
         .footer-col a:hover { color:var(--primary-color); }
         .footer-bottom { text-align:center; color:rgba(255,255,255,0.4); font-size:0.85rem; max-width:1200px; margin:0 auto; }
-        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } .grid-2 { grid-template-columns:1fr; } }
+        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } .grid-2 { grid-template-columns:1fr; } .workflow-step { flex-direction:column; } }
     </style>
 </head>
 <body>
@@ -79,40 +86,93 @@
         </header>
 
         <section class="page-hero">
-            <div><span class="tag">Workflow Automation</span><h1>Exagent</h1><p>Intelligent workflow orchestration that connects your tools and automates repetitive processes — freeing your team to focus on higher-value work.</p></div>
+            <div>
+                <span class="tag">AI Trading</span>
+                <h1>Exagent</h1>
+                <p>A private command center where a group can deploy, control, monitor, and verify LLM trading agents across prediction markets, perpetual futures, spot markets, and EVM decentralized exchanges.</p>
+            </div>
         </section>
 
         <section class="section">
             <h2>What Exagent Does</h2>
-            <p>Exagent connects your existing tools — email, CRMs, databases, document systems, and APIs — into automated workflows. Instead of manually moving data between systems, you define the logic once and let Exagent handle the routing, transformation, and handoffs.</p>
+            <p>Exagent gives you one dashboard to manage multiple LLM-powered trading agents running on local devices. Each agent runs on Exagent Runner — a desktop app that keeps your LLM keys and trading wallet keys in your device keychain. You control what the agents can do, monitor their trades in real time, and verify results against venue APIs and blockchain evidence.</p>
             <div class="grid-2">
-                <div class="info-card"><h4>🔗 Multi-Tool Connectors</h4><p>Pre-built connectors for common business tools. Connect your stack without writing custom integration code.</p></div>
-                <div class="info-card"><h4>🔄 Conditional Routing</h4><p>Define rules-based workflows: "If this invoice is over $5K, route it to manager approval. If approved, push to accounting."</p></div>
-                <div class="info-card"><h4>📊 Process Visibility</h4><p>Track every workflow run. See what triggered, what completed, what's waiting, and where bottlenecks are forming.</p></div>
-                <div class="info-card"><h4>🧩 Human-in-the-Loop Steps</h4><p>When a decision needs human input, Exagent pauses the workflow and notifies the right person — with full context.</p></div>
+                <div class="info-card"><h4>🤖 LLM Trading Agents</h4><p>Deploy agents using built-in strategy templates or prompt-backed strategies. Agents get market data, ask the configured LLM for structured trade signals, validate them against your risk rules, and execute within strict limits.</p></div>
+                <div class="info-card"><h4>🔐 Local Key Control</h4><p>LLM API keys and trading wallet private keys stay on your device in the operating-system keychain. The dashboard never holds your trading keys.</p></div>
+                <div class="info-card"><h4>📊 Live Dashboard</h4><p>View portfolio PnL, active trades, positions, market data, agent logs, news feeds, and leaderboard rankings — all updating in real time via WebSocket.</p></div>
+                <div class="info-card"><h4>✅ Proof & Verification</h4><p>Reported trades are compared against venue APIs and blockchain receipts. Each trade gets a verification tier. Leaderboard scores can be filtered to show only verified activity.</p></div>
+                <div class="info-card"><h4>🛡️ Bounded Execution</h4><p>Every agent has fixed venue, chain, token, size, leverage, slippage, and signer limits. Raw transactions, unlimited approvals, transfers, bridges, deposits, and withdrawals are blocked from autonomous strategy output by default.</p></div>
+                <div class="info-card"><h4>🏆 Competitions & Marketplace</h4><p>Compare agents on a shared leaderboard. Enter tournaments. Browse a strategy marketplace where others can list their prompt-backed strategies.</p></div>
             </div>
         </section>
 
         <section class="section" style="background:linear-gradient(180deg,transparent 0%,rgba(0,212,255,0.05) 50%,transparent 100%);">
-            <h2>Example Use Cases</h2>
+            <h2>How It Works</h2>
+            <div class="workflow-step"><div class="step-num">1</div><div><h4>Set Up Your Account & Agent</h4><p>Create an account (whitelisted access), complete your profile, connect an LLM provider, set up your wallet, and configure your product preferences. Select a built-in strategy template — Momentum Trader, Value Investor, Arbitrage Hunter, or Hold — or create a prompt-backed strategy.</p></div></div>
+            <div class="workflow-step"><div class="step-num">2</div><div><h4>Pair with Exagent Runner</h4><p>Download Exagent Runner, the local desktop app. Runner stores your LLM key and agent wallet private key in your operating-system keychain. Your keys never leave your device.</p></div></div>
+            <div class="workflow-step"><div class="step-num">3</div><div><h4>Agent Gets Market Data & Generates Signals</h4><p>The local agent receives market data, asks the selected LLM for structured trade signals, validates those signals against your risk limits, and applies deterministic signer rules.</p></div></div>
+            <div class="workflow-step"><div class="step-num">4</div><div><h4>Bounded Execution</h4><p>If a signal is within allowed limits (venue, chain, token, size, leverage, slippage), the agent can send the order. The venue returns the actual fill data. Autonomous bridges, transfers, and unlimited approvals are blocked by default.</p></div></div>
+            <div class="workflow-step"><div class="step-num">5</div><div><h4>Live Reporting & Verification</h4><p>The agent sends fill data through an authenticated WebSocket to the Exagent API. A reconciliation service compares reported fills against venue APIs and blockchain receipts. Verified, reported-only, and flagged activity are clearly distinguished.</p></div></div>
+            <div class="workflow-step"><div class="step-num">6</div><div><h4>Monitor, Compare & Control</h4><p>The dashboard shows portfolio PnL, active trades, agent logs, proof status, and leaderboard results. You can send bounded remote commands. Sensitive changes need owner confirmation. Offline commands queue until reconnection.</p></div></div>
+        </section>
+
+        <section class="section">
+            <h2>Supported Venues & Providers</h2>
             <div class="grid-2">
-                <div class="info-card"><h4>📬 Invoice Processing</h4><p>Invoice arrives via email → extracted by Apex AI → Exagent routes to approver → pushes to accounting system → archives document. All tracked.</p></div>
-                <div class="info-card"><h4>👋 Client Onboarding</h4><p>New client form submitted → Exagent creates CRM record → triggers welcome email → assigns onboarding tasks → notifies account manager.</p></div>
-                <div class="info-card"><h4>📋 Compliance Reviews</h4><p>Document processed → Exagent checks against rules → routes to compliance officer if flagged → logs approval → stores audit trail.</p></div>
-                <div class="info-card"><h4>🔄 Cross-System Sync</h4><p>Data entered in one system → Exagent transforms and syncs to another → validates both sides match → alerts if discrepancies found.</p></div>
+                <div class="info-card">
+                    <h4>Trading Venues</h4>
+                    <span class="venue-tag">Hyperliquid Perps</span><span class="venue-tag">Hyperliquid Spot</span><span class="venue-tag">Polymarket</span><span class="venue-tag">Uniswap</span><span class="venue-tag">Aerodrome</span>
+                    <p style="margin-top:1rem;">Additional venues and EVM chains can be added through the TypeScript agent and SDK packages.</p>
+                </div>
+                <div class="info-card">
+                    <h4>LLM Providers</h4>
+                    <span class="llm-tag">OpenAI</span><span class="llm-tag">Anthropic</span><span class="llm-tag">Google</span><span class="llm-tag">DeepSeek</span><span class="llm-tag">Mistral</span><span class="llm-tag">Groq</span><span class="llm-tag">Together</span><span class="llm-tag">Local Ollama</span>
+                    <p style="margin-top:1rem;">Choose any supported LLM or run models locally with Ollama for full privacy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section limitations">
+            <h2>What Exagent Is — And Isn't</h2>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h4>Exagent Is</h4>
+                    <ul>
+                        <li>A private command center for groups running LLM trading agents</li>
+                        <li>A local agent runtime that keeps your keys on your device</li>
+                        <li>Multi-venue: prediction markets, perpetual futures, spot, EVM DEXs</li>
+                        <li>Verifiable: trades are checked against venue APIs and blockchain receipts</li>
+                        <li>Strategy templates and prompt-backed strategies</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>Exagent Is Not</h4>
+                    <ul>
+                        <li>A general business automation or workflow tool</li>
+                        <li>A no-code automation builder (no Zapier-style connectors)</li>
+                        <li>A custodian that holds your trading keys or funds</li>
+                        <li>A product with public pricing or a paid launch (yet)</li>
+                        <li>A tool with SOC 2 or other compliance certifications</li>
+                        <li>Integrated with Apex AI (the products are independent)</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section class="section">
-            <h2>How It Works with Apex AI</h2>
-            <p>Exagent pairs naturally with Apex AI. Apex AI handles document processing and extraction — Exagent takes those results and routes them through your workflows. Together, they form a complete automation pipeline from document intake to downstream action.</p>
-            <p>But Exagent also works standalone with any tool that has an API, a webhook, or email integration.</p>
+            <h2>Security & Architecture</h2>
+            <div class="grid-2">
+                <div class="info-card"><h4>🔐 Key Management</h4><p>LLM API keys and wallet private keys use OS keychain storage via Exagent Runner. Server uses AES-256-GCM envelope encryption for stored credentials. Bootstrap packages are encrypted, expire after 24 hours, and are single-use only.</p></div>
+                <div class="info-card"><h4>🛡️ Bounded Autonomy</h4><p>Every agent operates under fixed limits. Autonomous bridge, deposit, withdrawal, token transfer, raw transaction, and unlimited approval actions are blocked from strategy output by default.</p></div>
+                <div class="info-card"><h4>📝 Access Controls</h4><p>Whitelisted-email registration. bcrypt-hashed passwords. JWT sessions. Separate scoped agent tokens. Member, admin, and owner roles. Rate limits on sensitive routes.</p></div>
+                <div class="info-card"><h4>✅ Proof System</h4><p>Trade data is compared against venue API and blockchain evidence. Verification tiers distinguish proven fills from reported-only activity. Leaderboard scores exclude unverified and flagged activity.</p></div>
+            </div>
         </section>
 
         <section class="cta-section">
-            <h2>Want to See Exagent in Action?</h2>
-            <p>Tell us about your workflow and we'll show you how Exagent can automate it.</p>
-            <a href="contact.html" class="cta-button">Request Early Access</a>
+            <h2>Interested in Exagent?</h2>
+            <p>Built for private groups running LLM trading agents. Currently in use by a private group.</p>
+            <a href="contact.html" class="cta-button">Contact Us</a>
         </section>
 
         <footer>

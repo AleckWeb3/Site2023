@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Web Three Innovations builds practical AI-powered software products including Apex AI for document review automation and Exagent for intelligent workflow orchestration.">
-    <title>Web Three Innovations | Practical AI Software Products</title>
+    <meta name="description" content="Web Three Innovations builds AI-powered software products: Apex AI for sales automation and Exagent for LLM trading agent command centers.">
+    <title>Web Three Innovations | AI Software Products</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         :root { --primary-color:#00d4ff; --secondary-color:#0066ff; --accent-color:#ff00ff; --text-color:#ffffff; --dark-bg:#0a0a1a; --card-bg:rgba(15,15,35,0.85); }
@@ -37,6 +37,7 @@
         .hero-content { max-width:850px; animation:fadeInUp 1s ease-out; }
         .hero h1 { font-size:3.2rem; margin-bottom:1.5rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1.2; }
         .hero .subtitle { font-size:1.3rem; margin-bottom:2.5rem; color:rgba(255,255,255,0.8); }
+        .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
         .hero-trust { font-size:0.9rem; color:rgba(255,255,255,0.5); margin-top:1.5rem; }
         .section { padding:5rem 5%; max-width:1200px; margin:0 auto; }
         .section-title { font-size:2.5rem; text-align:center; margin-bottom:1rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
@@ -58,6 +59,9 @@
         .cta-section { padding:6rem 5%; text-align:center; }
         .cta-section h2 { font-size:2.2rem; margin-bottom:1rem; }
         .cta-section p { font-size:1.1rem; margin-bottom:2rem; color:rgba(255,255,255,0.8); }
+        .faq-item { background:var(--card-bg); border:1px solid rgba(0,212,255,0.1); border-radius:12px; padding:1.5rem 2rem; margin-bottom:1rem; }
+        .faq-item h4 { color:var(--primary-color); margin-bottom:0.5rem; }
+        .faq-item p { color:rgba(255,255,255,0.7); line-height:1.7; }
         footer { padding:3rem 5%; background:var(--card-bg); backdrop-filter:blur(10px); border-top:1px solid rgba(0,212,255,0.1); }
         .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
         .footer-col h4 { color:var(--primary-color); margin-bottom:1rem; font-size:1rem; }
@@ -91,19 +95,19 @@
 
         <section class="hero">
             <div class="hero-content">
-                <h1>We Build Practical AI Software Products</h1>
-                <p class="subtitle">Web Three Innovations creates tools that help operations teams work faster, smarter, and with full control — starting with document automation and workflow orchestration.</p>
-                <div class="hero-ctas" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                <h1>We Build AI Software Products</h1>
+                <p class="subtitle">Web Three Innovations creates practical AI tools for sales automation and algorithmic trading — always under full human control.</p>
+                <div class="hero-ctas">
                     <a href="#products" class="cta-button">Explore Our Products</a>
                     <a href="contact.html" class="cta-secondary">Get In Touch</a>
                 </div>
-                <p class="hero-trust">Private by design · Human-in-the-loop · Built for operations teams</p>
+                <p class="hero-trust">Private by design · Human-in-the-loop · Full audit trails</p>
             </div>
         </section>
 
         <section class="section" id="products">
             <h2 class="section-title">Our Products</h2>
-            <p class="section-subtitle">Purpose-built AI tools for specific operational problems.</p>
+            <p class="section-subtitle">Purpose-built AI tools for specific problems.</p>
             <div class="product-cards">
                 <a href="apex-ai.html" class="product-card">
                     <div class="icon">🎯</div>
@@ -112,10 +116,10 @@
                     <span class="tag">Sales Automation</span>
                 </a>
                 <a href="exagent.html" class="product-card">
-                    <div class="icon">⚙️</div>
+                    <div class="icon">📈</div>
                     <h3>Exagent</h3>
-                    <p>Intelligent workflow orchestration that connects your tools and automates repetitive processes. Designed for teams tired of manual handoffs and data entry.</p>
-                    <span class="tag">Workflow Automation</span>
+                    <p>A private command center for groups to deploy, control, and verify LLM trading agents across prediction markets, perpetual futures, spot markets, and EVM DEXs.</p>
+                    <span class="tag">AI Trading</span>
                 </a>
             </div>
         </section>
@@ -142,53 +146,38 @@
         <section class="section" id="faq">
             <h2 class="section-title">Frequently Asked Questions</h2>
             <div style="max-width:800px;margin:0 auto;">
-                <div style="background:var(--card-bg);border:1px solid rgba(0,212,255,0.1);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1rem;">
-                    <h4 style="color:var(--primary-color);margin-bottom:0.5rem;">What does Web Three Innovations do?</h4>
-                    <p style="color:rgba(255,255,255,0.7);line-height:1.7;">We build AI-powered software products for operations teams. Our current products are Apex AI (top-of-funnel sales automation) and Exagent (workflow orchestration). Each product solves a specific operational problem with auditable AI assistance — not black-box automation.</p>
+                <div class="faq-item">
+                    <h4>What does Web Three Innovations do?</h4>
+                    <p>We build AI-powered software products. Our current products are Apex AI (top-of-funnel sales automation) and Exagent (LLM trading agent command center). Each product solves a specific problem with AI assistance under full human control.</p>
                 </div>
-                <div style="background:var(--card-bg);border:1px solid rgba(0,212,255,0.1);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1rem;">
-                    <h4 style="color:var(--primary-color);margin-bottom:0.5rem;">Is my data used to train your AI models?</h4>
-                    <p style="color:rgba(255,255,255,0.7);line-height:1.7;">No. Customer data is never used to train shared models. Your data is isolated to your organization. Read more in our <a href="security.html" style="color:var(--primary-color);">Security Policy</a>.</p>
+                <div class="faq-item">
+                    <h4>Is my data used to train your AI models?</h4>
+                    <p>No. Customer data is never used to train shared models. Your data is isolated to your organization. Read more in our <a href="security.html" style="color:var(--primary-color);">Security Policy</a>.</p>
                 </div>
-                <div style="background:var(--card-bg);border:1px solid rgba(0,212,255,0.1);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1rem;">
-                    <h4 style="color:var(--primary-color);margin-bottom:0.5rem;">Can I try before buying?</h4>
-                    <p style="color:rgba(255,255,255,0.7);line-height:1.7;">Yes. We offer pilot programs where you can test our products with your own documents and workflows. <a href="contact.html" style="color:var(--primary-color);">Contact us</a> to get started.</p>
+                <div class="faq-item">
+                    <h4>Can I try before buying?</h4>
+                    <p>We offer pilot programs where you can test our products with your own data and workflows. <a href="contact.html" style="color:var(--primary-color);">Contact us</a> to get started.</p>
                 </div>
-                <div style="background:var(--card-bg);border:1px solid rgba(0,212,255,0.1);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1rem;">
-                    <h4 style="color:var(--primary-color);margin-bottom:0.5rem;">How do I choose between Apex AI and Exagent?</h4>
-                    <p style="color:rgba(255,255,255,0.7);line-height:1.7;">Apex AI is for top-of-funnel sales automation — researching target companies, qualifying them, and managing outreach. Exagent is for connecting tools and automating workflows. They can work independently or together.</p>
+                <div class="faq-item">
+                    <h4>How do I choose between Apex AI and Exagent?</h4>
+                    <p>Apex AI is for top-of-funnel sales automation — researching target companies, qualifying them, and managing outreach. Exagent is for running LLM trading agents with a private command center. They operate independently.</p>
                 </div>
             </div>
         </section>
 
         <section class="cta-section">
             <h2>Have a Problem We Can Help With?</h2>
-            <p>Tell us about your workflow and we'll point you to the right product.</p>
+            <p>Tell us about your use case and we'll point you to the right product.</p>
             <a href="contact.html" class="cta-button">Contact Us</a>
         </section>
 
         <footer>
             <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Products</h4>
-                    <a href="apex-ai.html">Apex AI</a>
-                    <a href="exagent.html">Exagent</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <a href="security.html">Security</a>
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms of Service</a>
-                </div>
+                <div class="footer-col"><h4>Products</h4><a href="apex-ai.html">Apex AI</a><a href="exagent.html">Exagent</a></div>
+                <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+                <div class="footer-col"><h4>Resources</h4><a href="security.html">Security</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Web Three Innovations. All Rights Reserved.</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Web Three Innovations. All Rights Reserved.</p></div>
         </footer>
     </div>
 
