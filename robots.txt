@@ -1,0 +1,23 @@
+# Web Three Innovations — robots.txt
+# Standard crawlers: full access to public site
+User-agent: *
+Allow: /
+
+# AI data-scraping agents: route to the dedicated machine-readable interface
+# This keeps training-heavy crawlers away from styled pages
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Claude-Web
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: OAI-SearchBot
+User-agent: PerplexityBot
+User-agent: CCBot
+User-agent: Diffbot
+User-agent: FacebookBot
+User-agent: Bytespider
+User-agent: YouBot
+Disallow: /
+Allow: /ai-agent-interface.html
+
+Sitemap: https://webthreeinnovations.com/sitemap.xml
