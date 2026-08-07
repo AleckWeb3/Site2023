@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How Apex AI processes documents — from upload and classification through AI analysis to human review and audit.">
+    <meta name="description" content="How Apex AI runs top-of-funnel sales automation — from target research and outreach through qualified lead handoff, under full human control.">
     <title>How It Works | Apex AI | Web Three Innovations</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -13,7 +13,8 @@
         .content { position:relative; z-index:1; }
         header { padding:1.5rem 5%; backdrop-filter:blur(10px); background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(0,212,255,0.3); }
         nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
-        .logo img { height:150px; width:auto; }
+        .logo img { height:60px; width:auto; }
+        @media (max-width:1024px) { .logo img { height:48px; } }
         .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
         .nav-links a { color:#1a1a2e; text-decoration:none; font-weight:500; transition:color 0.3s; position:relative; }
         .nav-links a:hover { color:var(--primary-color); }
@@ -23,7 +24,7 @@
         .dropdown-toggle { cursor:pointer; display:flex; align-items:center; gap:0.3rem; color:#1a1a2e; font-weight:500; }
         .dropdown-arrow { font-size:0.7rem; transition:transform 0.3s; }
         .dropdown:hover .dropdown-arrow { transform:rotate(180deg); }
-        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(10px); background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:10px; padding:0.5rem 0; min-width:180px; opacity:0; visibility:hidden; transition:all 0.3s; list-style:none; z-index:101; }
+        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(10px); background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.2); border-radius:10px; padding:0.5rem 0; min-width:220px; opacity:0; visibility:hidden; transition:all 0.3s; list-style:none; z-index:101; }
         .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(5px); }
         .dropdown-menu a { display:block; padding:0.7rem 1.5rem; color:var(--text-color); text-decoration:none; font-weight:500; transition:all 0.3s; white-space:nowrap; }
         .dropdown-menu a:hover { background:rgba(0,212,255,0.1); color:var(--primary-color); }
@@ -32,13 +33,23 @@
         .cta-button:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
         .page-hero { min-height:25vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; }
         .page-hero h1 { font-size:2.8rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .page-hero p { font-size:1.1rem; color:rgba(255,255,255,0.6); max-width:650px; margin:0 auto; }
         .section { padding:3rem 5%; max-width:900px; margin:0 auto; }
         .section h2 { font-size:1.8rem; margin-bottom:1rem; background:linear-gradient(135deg,var(--primary-color),white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .section h3 { font-size:1.2rem; color:var(--primary-color); margin:1.5rem 0 0.5rem; }
         .section p, .section li { color:rgba(255,255,255,0.75); line-height:1.8; font-size:1.05rem; margin-bottom:1rem; }
         .section ul { padding-left:1.5rem; }
-        .process-step { background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:2rem; margin-bottom:1.5rem; }
-        .process-step h3 { color:var(--primary-color); margin-bottom:0.5rem; font-size:1.2rem; }
-        .process-step p { margin-bottom:0; font-size:0.95rem; }
+        .flow-track { display:flex; gap:.75rem; overflow-x:auto; padding:1rem 0; scrollbar-width:thin; scrollbar-color:var(--border, #1a1a26) transparent; }
+        .flow-step { flex:0 0 280px; background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:2rem; transition:all 0.3s; position:relative; }
+        .flow-step:hover { border-color:rgba(0,212,255,0.4); }
+        .flow-step .step-num { font-size:0.7rem; color:var(--primary-color); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:.8rem; }
+        .flow-step h4 { color:var(--text-color); margin-bottom:0.5rem; font-size:1rem; }
+        .flow-step p { font-size:0.85rem; color:rgba(255,255,255,0.6); line-height:1.6; margin:0; }
+        .flow-connector { display:flex; align-items:center; justify-content:center; flex:0 0 30px; color:var(--primary-color); font-size:1.5rem; opacity:0.4; }
+        .integration-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:1.5rem; }
+        .integration-card { background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.15); border-radius:15px; padding:1.5rem; }
+        .integration-card h4 { color:var(--primary-color); margin-bottom:0.5rem; }
+        .integration-card p { color:rgba(255,255,255,0.6); font-size:0.9rem; margin:0; }
         .cta-section { padding:4rem 5%; text-align:center; }
         footer { padding:3rem 5%; background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); border-top:1px solid rgba(0,212,255,0.1); }
         .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
@@ -46,7 +57,7 @@
         .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; }
         .footer-col a:hover { color:var(--primary-color); }
         .footer-bottom { text-align:center; color:rgba(255,255,255,0.4); font-size:0.85rem; max-width:1200px; margin:0 auto; }
-        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } }
+        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .integration-grid { grid-template-columns:1fr; } .flow-track { flex-direction:column; } .flow-connector { display:none; } }
     </style>
 </head>
 <body>
@@ -57,33 +68,49 @@
                 <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations Logo"></a></div>
                 <ul class="nav-links">
                     <li><a href="index.html#how-it-works">How It Works</a></li>
-                    <li class="dropdown"><span class="dropdown-toggle">Solutions <span class="dropdown-arrow">▼</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="tbd.html">TBD</a></li></ul></li>
+                    <li class="dropdown"><span class="dropdown-toggle">Products <span class="dropdown-arrow">▼</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="exagent.html">Exagent</a></li><li><a href="agent-consensus.html">Agent Consensus</a></li></ul></li>
                     <li><a href="index.html#faq">FAQ</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
                 <a href="contact.html" class="cta-button">Request Early Access</a>
             </nav>
         </header>
-        <section class="page-hero"><div><h1>How Apex AI Works</h1></div></section>
+        <section class="page-hero"><div><h1>How Apex AI Works</h1><p>Eight stages from target company to qualified lead handoff — one continuous, controlled workflow.</p></div></section>
         <section class="section">
-            <h2>Three Stages. Full Transparency.</h2>
-            <div class="process-step"><h3>1. Upload & Classify</h3><p>Upload documents via web interface, email, or API. Apex AI identifies document type (contract, invoice, report, etc.), extracts metadata, and routes to the appropriate processing pipeline. Supported formats include PDF, DOCX, and scanned documents with OCR.</p></div>
-            <div class="process-step"><h3>2. AI Processing & Confidence Scoring</h3><p>The AI extracts key fields, checks for anomalies, and assigns a confidence score to each finding. When confidence is high, results are marked "ready for review." When uncertain, items are flagged "needs attention" with the reason for escalation. <strong>The AI never auto-approves.</strong></p></div>
-            <div class="process-step"><h3>3. Human Review, Override & Export</h3><p>Your team reviews AI findings in a review dashboard. Approve, correct, or override any result. Every decision — AI suggestion plus human action — is logged with timestamp, user ID, and rationale. Export results as CSV, JSON, or integrate directly with your systems via API.</p></div>
+            <h2>The Sales Development Workflow</h2>
+            <div class="flow-track">
+                <div class="flow-step"><div class="step-num">01 Setup</div><h4>Sales Plan Configuration</h4><p>Define your company and offer, target rules, buyer roles, message guidance, follow-up plans, email connection, sending limits, and lead handoff — once per campaign.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-num">02 Input</div><h4>Add Target Companies</h4><p>Add one company, upload a list, or let Apex find targets under your active sales plan.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-num">03 Research</div><h4>Company Fit Analysis</h4><p>Research each company, record sources, and apply your Company Fit rules with deterministic scoring.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-num">04 Contact</div><h4>Contact Discovery</h4><p>Find one current contact in an approved role with valid email. If unverifiable, try another role or defer.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-num">05 Message</div><h4>Outreach Preparation</h4><p>Prepare messages under your sales plan. Edit any message or request a new version. Only exceptions need your review.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-num">06 Launch</div><h4>Approve & Start</h4><p>One approval activates the complete plan. Runs through email with sending controls.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-num">07 Reply</div><h4>Handle Replies</h4><p>Classify replies, handle opt-outs, stop follow-up after a response. Never chase someone who already engaged.</p></div>
+                <div class="flow-connector">→</div>
+                <div class="flow-step"><div class="step-num">08 Deliver</div><h4>Qualified Lead Handoff</h4><p>Download CSV or JSON and import into your sales system. Your reps receive qualified leads.</p></div>
+            </div>
         </section>
         <section class="section">
-            <h2>What Happens When the AI Is Uncertain?</h2>
-            <p>Uncertainty is a feature, not a bug. When the AI encounters an unfamiliar document format, ambiguous data, or conflicting signals, it escalates the item to human review with a specific explanation: what it found, why it's uncertain, and what a human should verify. This is logged for audit purposes.</p>
+            <h2>Full Human Control</h2>
+            <p>Apex AI never takes autonomous action on your behalf. It suggests, flags, and escalates — you approve or override every decision. Every AI action and human override is recorded in an immutable audit trail.</p>
+            <h3>When the AI Is Uncertain</h3>
+            <p>When Apex encounters ambiguous fit signals, unverifiable contacts, or conflicting data, it escalates the item with a specific explanation: what it found, why it's uncertain, and what a human should verify. Uncertainty is surfaced, not hidden.</p>
         </section>
         <section class="section">
             <h2>Integration Options</h2>
-            <p>Apex AI integrates with your existing workflow through:</p>
-            <ul>
-                <li>REST API for programmatic document submission and result retrieval</li>
-                <li>Email-based document submission with results returned via webhook</li>
-                <li>Web dashboard for manual upload and review</li>
-                <li>Export to common formats (CSV, JSON, PDF reports)</li>
-            </ul>
+            <p>Apex AI integrates with your existing sales workflow through:</p>
+            <div class="integration-grid">
+                <div class="integration-card"><h4>Email Integration</h4><p>Runs through your existing email system with sending controls and reply handling.</p></div>
+                <div class="integration-card"><h4>CSV / JSON Export</h4><p>Export qualified leads directly into your CRM or database via CSV or JSON.</p></div>
+                <div class="integration-card"><h4>Audit Logging</h4><p>Full audit trail on every AI action, human decision, and exported record.</p></div>
+                <div class="integration-card"><h4>Isolated Environments</h4><p>Each client runs in a dedicated environment with encrypted storage and strict access controls.</p></div>
+            </div>
         </section>
         <section class="cta-section"><a href="contact.html" class="cta-button">Request Early Access</a></section>
         <footer>

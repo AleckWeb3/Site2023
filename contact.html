@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Request early access to Apex AI. Tell us about your document workflow and we'll show you how Apex AI can help.">
-    <title>Request Early Access | Apex AI | Web Three Innovations</title>
+    <meta name="description" content="Request early access to Web Three Innovations products — Apex AI for sales automation, Exagent for LLM trading, and Agent Consensus for secure AI deployment.">
+    <title>Request Early Access | Web Three Innovations</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         :root { --primary-color:#00d4ff; --secondary-color:#0066ff; --accent-color:#ff00ff; --text-color:#ffffff; --dark-bg:#0a0a1a; --card-bg:rgba(15,15,35,0.85); }
@@ -13,7 +13,8 @@
         .content { position:relative; z-index:1; }
         header { padding:1.5rem 5%; backdrop-filter:blur(10px); background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(0,212,255,0.3); }
         nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
-        .logo img { height:150px; width:auto; }
+        .logo img { height:60px; width:auto; }
+        @media (max-width:1024px) { .logo img { height:48px; } }
         .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
         .nav-links a { color:#1a1a2e; text-decoration:none; font-weight:500; transition:color 0.3s; position:relative; }
         .nav-links a:hover { color:var(--primary-color); }
@@ -45,7 +46,7 @@
         .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; transition:color 0.3s; }
         .footer-col a:hover { color:var(--primary-color); }
         .footer-bottom { text-align:center; color:rgba(255,255,255,0.4); font-size:0.85rem; max-width:1200px; margin:0 auto; }
-        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } }
+        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:36px; } }
     </style>
 </head>
 <body>
@@ -53,10 +54,10 @@
     <div class="content">
         <header>
             <nav>
-                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations Logo"></a></div>
+                <div class="logo"><a href="index.html"><img src="web3-logo.png" alt="Web Three Innovations Logo"></a></div>
                 <ul class="nav-links">
                     <li><a href="index.html#how-it-works">How It Works</a></li>
-                    <li class="dropdown"><span class="dropdown-toggle">Solutions <span class="dropdown-arrow">▼</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="tbd.html">TBD</a></li></ul></li>
+                    <li class="dropdown"><span class="dropdown-toggle">Products <span class="dropdown-arrow">▼</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="exagent.html">Exagent</a></li><li><a href="agent-consensus.html">Agent Consensus</a></li></ul></li>
                     <li><a href="index.html#faq">FAQ</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
@@ -87,12 +88,18 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="doc_type">What type of documents do you review?</label>
-                    <input type="text" id="doc_type" name="doc_type" placeholder="e.g., contracts, invoices, compliance reports">
+                    <label for="product">Which product are you interested in?</label>
+                    <select id="product" name="product">
+                        <option value="">Select...</option>
+                        <option value="apex-ai">Apex AI (Sales Automation)</option>
+                        <option value="exagent">Exagent (AI Trading)</option>
+                        <option value="agent-consensus">Agent Consensus (DevOps Integration)</option>
+                        <option value="not-sure">Not sure — show me what fits</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="volume">Approximate monthly document volume</label>
-                    <input type="text" id="volume" name="volume" placeholder="e.g., 500 documents/month">
+                    <label for="scope">Describe your use case or current workflow</label>
+                    <input type="text" id="scope" name="scope" placeholder="e.g., top-of-funnel outreach to 300 target accounts, or exploring LLM trading...">
                 </div>
                 <div class="form-group">
                     <label for="message">Anything else we should know?</label>

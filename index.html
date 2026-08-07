@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Web Three Innovations builds AI-powered software products: Apex AI for sales automation, Exagent for LLM trading agents, and Agent Consensus Integration for secure AI deployment.">
     <title>Web Three Innovations | AI Software Products</title>
+    <link rel="canonical" href="https://webthreeinnovations.com/">
+    <meta property="og:title" content="Web Three Innovations | AI Software Products">
+    <meta property="og:description" content="Precision AI software: Apex AI for sales automation, Exagent for LLM trading agents, and Agent Consensus Integration for secure AI deployment.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webthreeinnovations.com/">
+    <meta property="og:image" content="https://webthreeinnovations.com/Web-Three-Innovations-logo-dark-background.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Web Three Innovations | AI Software Products">
+    <meta name="twitter:description" content="Precision AI software for sales automation, trading, and secure AI deployment.">
+    <link rel="icon" type="image/png" href="Web-Three-Innovations-logo-dark-background.png">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         :root {
@@ -23,7 +33,9 @@
         header { padding:1.2rem 5%; background:rgba(5,5,8,0.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,0.06); }
         nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
         .logo a { display:flex; align-items:center; text-decoration:none; gap:0.6rem; }
-        .logo img { height:160px; width:auto; filter:invert(0.85) brightness(1.4); }
+        .logo img { height:60px; width:auto; flex-shrink:0; }
+        @media (max-width:1024px) { .logo img { height:48px; } }
+        @media (max-width:768px) { .logo img { height:36px; } }
         .logo-text { font-size:1.3rem; font-weight:300; color:var(--text-bright); letter-spacing:0.15em; }
         .logo-sub { font-size:0.55rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.2em; }
         .nav-links { display:flex; gap:2.5rem; list-style:none; align-items:center; }
@@ -110,7 +122,7 @@
             <nav>
                 <div class="logo">
                     <a href="index.html">
-                        <img src="Web%20Three%20Innovations%20logo-D1.png" alt="Web Three Innovations">
+                        <img src="Web-Three-Innovations-logo-dark-background.png" alt="Web Three Innovations">
                         <div><span class="logo-text">W3I</span><br><span class="logo-sub">Web Three Innovations</span></div>
                     </a>
                 </div>
@@ -176,6 +188,7 @@
 
         <div class="geo-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width="0.5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity="0.5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width="0.5"/></svg></div>
 
+        <span id="how-it-works"></span>
         <section class="section" id="about">
             <div class="section-label">How We Build</div>
             <h2 class="section-title">Engineering principles</h2>

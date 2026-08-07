@@ -13,7 +13,8 @@
         .content { position:relative; z-index:1; }
         header { padding:1.5rem 5%; backdrop-filter:blur(10px); background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(0,212,255,0.3); }
         nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
-        .logo img { height:150px; width:auto; }
+        .logo img { height:60px; width:auto; }
+        @media (max-width:1024px) { .logo img { height:48px; } }
         .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
         .nav-links a { color:#1a1a2e; text-decoration:none; font-weight:500; transition:color 0.3s; position:relative; }
         .nav-links a:hover { color:var(--primary-color); }
@@ -41,7 +42,7 @@
         .footer-col a { display:block; color:rgba(255,255,255,0.6); text-decoration:none; padding:0.3rem 0; font-size:0.9rem; transition:color 0.3s; }
         .footer-col a:hover { color:var(--primary-color); }
         .footer-bottom { text-align:center; color:rgba(255,255,255,0.4); font-size:0.85rem; max-width:1200px; margin:0 auto; }
-        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:80px; } }
+        @media (max-width:768px) { .page-hero h1 { font-size:2rem; } .nav-links { display:none; } .logo img { height:36px; } }
     </style>
 </head>
 <body>
@@ -49,10 +50,10 @@
     <div class="content">
         <header>
             <nav>
-                <div class="logo"><a href="index.html"><img src="W3ILogo.png" alt="Web Three Innovations Logo"></a></div>
+                <div class="logo"><a href="index.html"><img src="web3-logo.png" alt="Web Three Innovations Logo"></a></div>
                 <ul class="nav-links">
                     <li><a href="index.html#how-it-works">How It Works</a></li>
-                    <li class="dropdown"><span class="dropdown-toggle">Solutions <span class="dropdown-arrow">▼</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="tbd.html">TBD</a></li></ul></li>
+                    <li class="dropdown"><span class="dropdown-toggle">Products <span class="dropdown-arrow">▼</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="exagent.html">Exagent</a></li><li><a href="agent-consensus.html">Agent Consensus</a></li></ul></li>
                     <li><a href="index.html#faq">FAQ</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
@@ -63,7 +64,7 @@
         <section class="section">
             <h2>Who We Are</h2>
             <p>Web Three Innovations is a software company focused on building practical tools that solve real operational problems. We believe AI should make work easier — not replace human judgment.</p>
-            <p>Our first product, Apex AI, automates document review for operations, legal, and compliance teams. We build with transparency: the AI flags and suggests; humans decide and audit.</p>
+            <p>Our first product, Apex AI, automates top-of-funnel sales development — researching target companies, qualifying them against your rules, preparing approved outreach, handling replies, and delivering qualified leads. We build with transparency: the AI flags and suggests; humans decide and audit.</p>
             <p>We're a small, experienced team with backgrounds in enterprise software, AI integration, and operations consulting. We prioritize reliability, security, and honest communication over hype.</p>
         </section>
         <section class="section">
