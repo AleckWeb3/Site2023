@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Web Three Innovations builds AI-powered software products: Apex AI for sales automation and Exagent for LLM trading agent command centers.">
+    <meta name="description" content="Web Three Innovations builds AI-powered software products: Apex AI for sales automation, Exagent for LLM trading agents, and Agent Consensus Integration for secure AI deployment.">
     <title>Web Three Innovations | AI Software Products</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -23,6 +23,7 @@
         header { padding:1.2rem 5%; background:rgba(5,5,8,0.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,0.06); }
         nav { display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; }
         .logo a { display:flex; align-items:center; text-decoration:none; gap:0.6rem; }
+        .logo img { height:50px; width:auto; filter:invert(0.85) brightness(1.4); }
         .logo-text { font-size:1.3rem; font-weight:300; color:var(--text-bright); letter-spacing:0.15em; }
         .logo-sub { font-size:0.55rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.2em; }
         .nav-links { display:flex; gap:2.5rem; list-style:none; align-items:center; }
@@ -34,7 +35,7 @@
         .dropdown-toggle { cursor:pointer; display:flex; align-items:center; gap:0.3rem; color:var(--text-dim); font-size:0.9rem; letter-spacing:0.02em; text-transform:uppercase; font-weight:500; }
         .dropdown-arrow { font-size:0.6rem; transition:transform 0.3s; opacity:0.5; }
         .dropdown:hover .dropdown-arrow { transform:rotate(180deg); opacity:1; }
-        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(12px); background:rgba(14,14,20,0.97); backdrop-filter:blur(20px); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0; min-width:180px; opacity:0; visibility:hidden; transition:all 0.25s; list-style:none; z-index:101; }
+        .dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(12px); background:rgba(14,14,20,0.97); backdrop-filter:blur(20px); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0; min-width:220px; opacity:0; visibility:hidden; transition:all 0.25s; list-style:none; z-index:101; }
         .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(6px); }
         .dropdown-menu li { padding:0; }
         .dropdown-menu a { display:block; padding:0.65rem 1.4rem; color:var(--text-dim); text-decoration:none; font-weight:400; font-size:0.85rem; transition:all 0.2s; white-space:nowrap; text-transform:none; letter-spacing:0; }
@@ -44,28 +45,28 @@
         .btn:hover { border-color:var(--border-hover); background:var(--surface-hover); box-shadow:0 0 30px rgba(255,255,255,0.03); }
         .btn-ghost { background:transparent; border-color:transparent; }
         .btn-ghost:hover { background:rgba(255,255,255,0.03); }
-        .hero { min-height:85vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; position:relative; }
+        .hero { min-height:80vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 5%; position:relative; }
         .hero::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:600px; background:radial-gradient(circle,rgba(255,255,255,0.02) 0%,transparent 70%); pointer-events:none; }
         .hero-content { max-width:750px; animation:fadeInUp 1.2s ease-out; position:relative; }
-        .hero h1 { font-size:3.5rem; margin-bottom:1.5rem; color:var(--text-bright); font-weight:300; letter-spacing:-0.02em; line-height:1.15; }
+        .hero h1 { font-size:3.2rem; margin-bottom:1.5rem; color:var(--text-bright); font-weight:300; letter-spacing:-0.02em; line-height:1.15; }
         .hero h1 span { font-weight:600; }
         .hero .subtitle { font-size:1.15rem; margin-bottom:2.5rem; color:var(--text-dim); max-width:550px; margin-left:auto; margin-right:auto; line-height:1.7; }
         .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
         .hero-trust { font-size:0.8rem; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:0.1em; }
-        .section { padding:6rem 5%; max-width:1200px; margin:0 auto; }
+        .section { padding:5rem 5%; max-width:1200px; margin:0 auto; }
         .section-label { text-align:center; color:var(--text-dim); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1rem; }
         .section-title { font-size:2.2rem; text-align:center; margin-bottom:1rem; color:var(--text-bright); font-weight:300; letter-spacing:-0.01em; }
-        .section-subtitle { text-align:center; color:var(--text-dim); margin-bottom:4rem; font-size:1rem; max-width:550px; margin-left:auto; margin-right:auto; }
-        .product-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(380px,1fr)); gap:1.5rem; max-width:950px; margin:0 auto; }
-        .product-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:2.5rem; transition:all 0.35s; text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; }
+        .section-subtitle { text-align:center; color:var(--text-dim); margin-bottom:3rem; font-size:1rem; max-width:550px; margin-left:auto; margin-right:auto; }
+        .product-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px,1fr)); gap:1.5rem; max-width:1050px; margin:0 auto; }
+        .product-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:2rem; transition:all 0.35s; text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; }
         .product-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent); opacity:0; transition:opacity 0.35s; }
         .product-card:hover { border-color:var(--border-hover); background:var(--surface-hover); transform:translateY(-2px); }
         .product-card:hover::before { opacity:1; }
-        .product-card .icon-wrap { width:48px; height:48px; border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem; background:rgba(255,255,255,0.02); }
+        .product-card .icon-wrap { width:48px; height:48px; border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; background:rgba(255,255,255,0.02); }
         .product-card .icon-wrap svg { width:22px; height:22px; stroke:var(--text-dim); fill:none; stroke-width:1.5; }
         .product-card:hover .icon-wrap svg { stroke:var(--text-bright); }
-        .product-card h3 { font-size:1.4rem; margin-bottom:0.8rem; color:var(--text-bright); font-weight:500; }
-        .product-card p { color:var(--text-dim); line-height:1.7; margin-bottom:1.2rem; font-size:0.95rem; }
+        .product-card h3 { font-size:1.3rem; margin-bottom:0.6rem; color:var(--text-bright); font-weight:500; }
+        .product-card p { color:var(--text-dim); line-height:1.6; margin-bottom:1rem; font-size:0.9rem; }
         .product-card .tag { display:inline-block; padding:0.25rem 0.7rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:4px; font-size:0.7rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em; }
         .process-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem; }
         .process-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:2rem; transition:all 0.3s; position:relative; }
@@ -77,11 +78,11 @@
         .faq-item:hover { border-color:var(--border-hover); }
         .faq-item h4 { color:var(--text-bright); margin-bottom:0.5rem; font-size:1rem; font-weight:500; }
         .faq-item p { color:var(--text-dim); line-height:1.7; font-size:0.9rem; }
-        .cta-section { padding:6rem 5%; text-align:center; position:relative; }
+        .cta-section { padding:5rem 5%; text-align:center; position:relative; }
         .cta-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:400px; height:400px; background:radial-gradient(circle,rgba(255,255,255,0.015) 0%,transparent 70%); pointer-events:none; }
         .cta-section h2 { font-size:2rem; margin-bottom:1rem; color:var(--text-bright); font-weight:300; }
-        .cta-section p { font-size:1rem; margin-bottom:2.5rem; color:var(--text-dim); }
-        .orbit-container { position:relative; width:200px; height:200px; margin:0 auto 2rem; }
+        .cta-section p { font-size:1rem; margin-bottom:2rem; color:var(--text-dim); }
+        .orbit-container { position:relative; width:180px; height:180px; margin:0 auto 2rem; }
         .orbit-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:8px; height:8px; background:var(--text-dim); border-radius:50%; }
         .orbit-path { position:absolute; top:0; left:0; width:100%; height:100%; border:1px solid rgba(255,255,255,0.06); border-radius:50%; animation:orbit 20s linear infinite; }
         .orbit-path:nth-child(2) { width:70%; height:70%; top:15%; left:15%; animation-duration:14s; animation-direction:reverse; }
@@ -109,7 +110,7 @@
             <nav>
                 <div class="logo">
                     <a href="index.html">
-                        <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/><circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.3"/><line x1="12" y1="14" x2="20" y2="14" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><line x1="12" y1="20" x2="20" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/><line x1="12" y1="26" x2="26" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="0.6"/><text x="20" y="11" text-anchor="middle" fill="#e8e8f0" font-size="8" font-weight="400" font-family="system-ui" letter-spacing="1">W3I</text></svg>
+                        <img src="Web%20Three%20Innovations%20logo-D1.png" alt="Web Three Innovations">
                         <div><span class="logo-text">W3I</span><br><span class="logo-sub">Web Three Innovations</span></div>
                     </a>
                 </div>
@@ -119,6 +120,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="apex-ai.html">Apex AI</a></li>
                             <li><a href="exagent.html">Exagent</a></li>
+                            <li><a href="agent-consensus.html">Agent Consensus</a></li>
                         </ul>
                     </li>
                     <li><a href="#about">Approach</a></li>
@@ -137,7 +139,7 @@
                     <div class="orbit-path"><div class="orbit-dot"></div></div>
                 </div>
                 <h1><span>Precision software</span> for intelligent automation</h1>
-                <p class="subtitle">Web Three Innovations builds focused AI products for sales automation and algorithmic trading. Every tool operates under human control with full audit trails.</p>
+                <p class="subtitle">Web Three Innovations builds focused AI products for sales automation, algorithmic trading, and secure agent-driven deployment.</p>
                 <div class="hero-ctas">
                     <a href="#products" class="btn">Explore Products</a>
                     <a href="contact.html" class="btn btn-ghost">Get In Touch</a>
@@ -152,20 +154,22 @@
             <p class="section-subtitle">Each product solves a specific operational challenge with precision and transparency.</p>
             <div class="product-cards">
                 <a href="apex-ai.html" class="product-card">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9" stroke-dasharray="4 4"/></svg>
-                    </div>
+                    <div class="icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9" stroke-dasharray="4 4"/></svg></div>
                     <h3>Apex AI</h3>
                     <p>Top-of-funnel sales automation. Research target companies, qualify them against your rules, prepare approved outreach, handle replies, and deliver qualified leads.</p>
                     <span class="tag">Sales Automation</span>
                 </a>
                 <a href="exagent.html" class="product-card">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 24 24"><polyline points="4 20 12 4 20 20"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
-                    </div>
+                    <div class="icon-wrap"><svg viewBox="0 0 24 24"><polyline points="4 20 12 4 20 20"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
                     <h3>Exagent</h3>
                     <p>Private command center for LLM trading agents. Deploy, control, monitor, and verify agents across prediction markets, perpetual futures, spot markets, and EVM DEXs.</p>
                     <span class="tag">AI Trading</span>
+                </a>
+                <a href="agent-consensus.html" class="product-card">
+                    <div class="icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1" stroke-width="1.5"/><line x1="10" y1="6" x2="14" y2="6" stroke-width="1.2"/><line x1="17" y1="6" x2="17" y2="10" stroke-width="1.2"/><line x1="14" y1="10" x2="10" y2="10" stroke-width="1.2"/></svg></div>
+                    <h3>Agent Consensus Integration</h3>
+                    <p>Secure protocol for AI development agents to control local integration agents. Deploy software safely in complex environments without exposing production systems.</p>
+                    <span class="tag">DevOps Integration</span>
                 </a>
             </div>
         </section>
@@ -177,21 +181,9 @@
             <h2 class="section-title">Engineering principles</h2>
             <p class="section-subtitle">We prioritize reliability, transparency, and user control over marketing hype.</p>
             <div class="process-grid">
-                <div class="process-card">
-                    <div class="step-num">01</div>
-                    <h3>Controlled AI</h3>
-                    <p>Our products never take autonomous action on your behalf. They suggest, flag, and escalate — you approve or override every decision with full audit trails.</p>
-                </div>
-                <div class="process-card">
-                    <div class="step-num">02</div>
-                    <h3>Data Isolation</h3>
-                    <p>Your data is never used to train shared models. Each client environment is isolated, with encrypted storage and strict access controls.</p>
-                </div>
-                <div class="process-card">
-                    <div class="step-num">03</div>
-                    <h3>Iterative Delivery</h3>
-                    <p>We ship early with core functionality and improve based on real usage. Our roadmap is driven by actual user feedback, not speculative feature lists.</p>
-                </div>
+                <div class="process-card"><div class="step-num">01</div><h3>Controlled AI</h3><p>Our products never take autonomous action on your behalf. They suggest, flag, and escalate — you approve or override every decision with full audit trails.</p></div>
+                <div class="process-card"><div class="step-num">02</div><h3>Data Isolation</h3><p>Your data is never used to train shared models. Each client environment is isolated, with encrypted storage and strict access controls.</p></div>
+                <div class="process-card"><div class="step-num">03</div><h3>Iterative Delivery</h3><p>We ship early with core functionality and improve based on real usage. Our roadmap is driven by actual user feedback, not speculative feature lists.</p></div>
             </div>
         </section>
 
@@ -199,22 +191,9 @@
             <div class="section-label">Questions</div>
             <h2 class="section-title">Frequently asked</h2>
             <div style="max-width:750px;margin:3rem auto 0;">
-                <div class="faq-item">
-                    <h4>What does Web Three Innovations do?</h4>
-                    <p>We build AI-powered software products. Apex AI handles top-of-funnel sales automation. Exagent is a command center for LLM trading agents. Both operate under full human control with audit trails.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Is my data used to train AI models?</h4>
-                    <p>No. Customer data is never used to train shared models. Your data is isolated to your organization.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Can I try before purchasing?</h4>
-                    <p>We offer pilot programs where you test our products with your own data and workflows. <a href="contact.html" style="color:var(--text-bright);">Contact us</a> to start.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>How do Apex AI and Exagent relate?</h4>
-                    <p>They are independent products. Apex AI is for sales teams who need automated company research and outreach. Exagent is for groups running algorithmic trading strategies. They do not depend on each other.</p>
-                </div>
+                <div class="faq-item"><h4>What does Web Three Innovations do?</h4><p>We build AI-powered software products. Apex AI handles sales automation, Exagent runs LLM trading agents, and Agent Consensus Integration enables secure AI-driven deployments. All operate under full human control with audit trails.</p></div>
+                <div class="faq-item"><h4>Is my data used to train AI models?</h4><p>No. Customer data is never used to train shared models. Your data is isolated to your organization.</p></div>
+                <div class="faq-item"><h4>Can I try before purchasing?</h4><p>We offer pilot programs where you test our products with your own data and workflows. <a href="contact.html" style="color:var(--text-bright);">Contact us</a> to start.</p></div>
             </div>
         </section>
 
@@ -226,7 +205,7 @@
 
         <footer>
             <div class="footer-grid">
-                <div class="footer-col"><h4>Products</h4><a href="apex-ai.html">Apex AI</a><a href="exagent.html">Exagent</a></div>
+                <div class="footer-col"><h4>Products</h4><a href="apex-ai.html">Apex AI</a><a href="exagent.html">Exagent</a><a href="agent-consensus.html">Agent Consensus</a></div>
                 <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a></div>
                 <div class="footer-col"><h4>Resources</h4><a href="security.html">Security</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
             </div>

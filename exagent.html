@@ -14,14 +14,14 @@
         header{padding:1.2rem 5%;background:rgba(5,5,8,0.85);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
         nav{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto}
         .logo a{display:flex;align-items:center;text-decoration:none;gap:0.6rem}
-        .logo svg{width:40px;height:40px;flex-shrink:0}
+        .logo img{height:50px;width:auto;filter:invert(0.85) brightness(1.4)}
         .logo-text{font-size:1.3rem;font-weight:300;color:var(--text-bright);letter-spacing:0.15em}
         .logo-sub{font-size:0.55rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.2em}
         .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
         .nav-links a,.dropdown-toggle{color:var(--text-dim);text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.02em;transition:color .3s;text-transform:uppercase;cursor:pointer}
         .nav-links a:hover,.dropdown-toggle:hover{color:var(--text-bright)}
         .dropdown{position:relative}.dropdown-arrow{font-size:.6rem;transition:transform .3s;opacity:.5}.dropdown:hover .dropdown-arrow{transform:rotate(180deg);opacity:1}
-        .dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(12px);background:rgba(14,14,20,.97);border:1px solid var(--border);border-radius:8px;padding:.4rem 0;min-width:180px;opacity:0;visibility:hidden;transition:all .25s;list-style:none;z-index:101}
+        .dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(12px);background:rgba(14,14,20,.97);border:1px solid var(--border);border-radius:8px;padding:.4rem 0;min-width:220px;opacity:0;visibility:hidden;transition:all .25s;list-style:none;z-index:101}
         .dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(6px)}
         .dropdown-menu a{display:block;padding:.65rem 1.4rem;color:var(--text-dim);text-decoration:none;font-weight:400;font-size:.85rem;text-transform:none;letter-spacing:0}
         .dropdown-menu a:hover{background:rgba(255,255,255,.04);color:var(--text-bright)}
@@ -33,13 +33,10 @@
         .hero p{font-size:1.1rem;color:var(--text-dim);max-width:700px;line-height:1.7}
         .terminal-panel{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:2rem 0}
         .terminal-header{background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem}
-        .terminal-dot{width:10px;height:10px;border-radius:50%;background:var(--border)}
-        .terminal-dot.green{background:var(--green)}
+        .terminal-dot{width:10px;height:10px;border-radius:50%;background:var(--border)}.terminal-dot.green{background:var(--green)}
         .terminal-body{padding:1.5rem;font-family:'Cascadia Code','Fira Code','JetBrains Mono',monospace;font-size:.8rem;color:var(--text-dim);line-height:1.8;overflow-x:auto}
-        .terminal-body .prompt{color:var(--green-bright)}
-        .terminal-body .cmd{color:var(--text-bright)}
-        .terminal-body .output{color:var(--text-dim)}
-        .terminal-body .highlight{color:var(--green-bright)}
+        .terminal-body .prompt{color:var(--green-bright)}.terminal-body .cmd{color:var(--text-bright)}
+        .terminal-body .output{color:var(--text-dim)}.terminal-body .highlight{color:var(--green-bright)}
         .section{padding:4rem 5%;max-width:1100px;margin:0 auto}
         .section h2{font-size:1.8rem;color:var(--text-bright);font-weight:300;margin-bottom:.5rem}
         .section .desc{color:var(--text-dim);margin-bottom:2.5rem;font-size:.95rem;line-height:1.7}
@@ -58,10 +55,8 @@
         .pill-row{display:flex;flex-wrap:wrap;gap:.4rem}
         .pill{padding:.25rem .65rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
         .pill.green{border-color:rgba(74,107,90,.3);color:var(--green-bright)}
-        .section-divider{text-align:center;padding:1rem 0}
-        .section-divider svg{width:60px;height:2px;opacity:.2}
-        .cta-section{padding:5rem 5%;text-align:center}
-        .cta-section h2{font-size:2rem;color:var(--text-bright);font-weight:300;margin-bottom:.5rem}
+        .section-divider{text-align:center;padding:1rem 0}.section-divider svg{width:60px;height:2px;opacity:.2}
+        .cta-section{padding:5rem 5%;text-align:center}.cta-section h2{font-size:2rem;color:var(--text-bright);font-weight:300;margin-bottom:.5rem}
         .cta-section p{color:var(--text-dim);margin-bottom:2rem}
         footer{padding:3rem 5%;background:var(--surface);border-top:1px solid var(--border)}
         .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;max-width:1200px;margin:0 auto 2rem}
@@ -78,26 +73,22 @@
             <nav>
                 <div class="logo">
                     <a href="index.html">
-                        <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/><circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.3"/><line x1="12" y1="14" x2="20" y2="14" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><line x1="12" y1="20" x2="20" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/><line x1="12" y1="26" x2="26" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="0.6"/><text x="20" y="11" text-anchor="middle" fill="#e8e8f0" font-size="8" font-weight="400" font-family="system-ui" letter-spacing="1">W3I</text></svg>
+                        <img src="Web%20Three%20Innovations%20logo-D1.png" alt="Web Three Innovations">
                         <div><span class="logo-text">W3I</span><br><span class="logo-sub">Web Three Innovations</span></div>
                     </a>
                 </div>
                 <ul class="nav-links">
-                    <li class="dropdown"><span class="dropdown-toggle">Products <span class="dropdown-arrow">▾</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="exagent.html">Exagent</a></li></ul></li>
+                    <li class="dropdown"><span class="dropdown-toggle">Products <span class="dropdown-arrow">▾</span></span><ul class="dropdown-menu"><li><a href="apex-ai.html">Apex AI</a></li><li><a href="exagent.html">Exagent</a></li><li><a href="agent-consensus.html">Agent Consensus</a></li></ul></li>
                     <li><a href="index.html#about">Approach</a></li><li><a href="index.html#faq">FAQ</a></li>
                 </ul>
                 <a href="contact.html" class="btn">Contact</a>
             </nav>
         </header>
         <section class="hero">
-            <span class="tag">AI Trading</span>
-            <h1>Exagent</h1>
+            <span class="tag">AI Trading</span><h1>Exagent</h1>
             <p>A private command center where a group deploys, controls, monitors, and verifies LLM trading agents across prediction markets, perpetual futures, spot markets, and EVM decentralized exchanges.</p>
             <div class="terminal-panel">
-                <div class="terminal-header">
-                    <div class="terminal-dot green"></div><div class="terminal-dot"></div><div class="terminal-dot"></div>
-                    <span style="margin-left:.5rem;font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;">Agent Session — live</span>
-                </div>
+                <div class="terminal-header"><div class="terminal-dot green"></div><div class="terminal-dot"></div><div class="terminal-dot"></div><span style="margin-left:.5rem;font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;">Agent Session — live</span></div>
                 <div class="terminal-body">
                     <div><span class="prompt">agent$</span> <span class="cmd">deploy --strategy=momentum --venue=hyperliquid_perps</span></div>
                     <div><span class="output">[OK] Agent deployed. Runner connected.</span></div>
@@ -111,14 +102,13 @@
         </section>
         <div class="section-divider"><svg viewBox="0 0 60 2"><line x1="0" y1="1" x2="24" y2="1" stroke="#fff" stroke-width=".5"/><circle cx="30" cy="1" r="1.5" fill="#fff" opacity=".5"/><line x1="36" y1="1" x2="60" y2="1" stroke="#fff" stroke-width=".5"/></svg></div>
         <section class="section">
-            <h2>Dashboard overview</h2>
-            <p class="desc">Six panels. Live WebSocket updates. Complete visibility into agent activity.</p>
+            <h2>Dashboard overview</h2><p class="desc">Six panels. Live WebSocket updates. Complete visibility into agent activity.</p>
             <div class="grid-dash">
-                <div class="dash-card"><div class="metric">$124.8K</div><div class="metric-label">Portfolio PnL (24h)</div><h4>Portfolio</h4><p>Real-time profit and loss across all agents, positions, and venues. Drill into per-agent performance.</p></div>
-                <div class="dash-card"><div class="metric">14</div><div class="metric-label">Active Positions</div><h4>Positions</h4><p>Monitor open positions, entry prices, current mark prices, unrealized PnL, and liquidation risks.</p></div>
-                <div class="dash-card"><div class="metric">3</div><div class="metric-label">Agents Online</div><h4>Agents</h4><p>Agent status (online, idle, error, offline). Start, stop, and configure agents. View logs and command history.</p></div>
-                <div class="dash-card"><div class="metric">89%</div><div class="metric-label">Trades Verified</div><h4>Proof System</h4><p>Reconciliation service compares reported trades against venue APIs and blockchain receipts with verification tiers.</p></div>
-                <div class="dash-card"><div class="metric">#2</div><div class="metric-label">Leaderboard Rank</div><h4>Leaderboard</h4><p>Compare agent performance across the group. Filter by verified-only scores. Track tournament standings.</p></div>
+                <div class="dash-card"><div class="metric">$124.8K</div><div class="metric-label">Portfolio PnL (24h)</div><h4>Portfolio</h4><p>Real-time profit and loss across all agents, positions, and venues.</p></div>
+                <div class="dash-card"><div class="metric">14</div><div class="metric-label">Active Positions</div><h4>Positions</h4><p>Monitor open positions, entry prices, mark prices, and unrealized PnL.</p></div>
+                <div class="dash-card"><div class="metric">3</div><div class="metric-label">Agents Online</div><h4>Agents</h4><p>Agent status (online, idle, error, offline). Start, stop, and configure agents.</p></div>
+                <div class="dash-card"><div class="metric">89%</div><div class="metric-label">Trades Verified</div><h4>Proof System</h4><p>Reconciliation service compares reported trades against venue APIs and blockchain receipts.</p></div>
+                <div class="dash-card"><div class="metric">#2</div><div class="metric-label">Leaderboard Rank</div><h4>Leaderboard</h4><p>Compare agent performance across the group. Filter by verified-only scores. Tournament standings.</p></div>
                 <div class="dash-card"><div class="metric">2.4s</div><div class="metric-label">Avg Signal Latency</div><h4>Performance</h4><p>Market data ingestion, LLM signal generation, validation, and execution timing.</p></div>
             </div>
         </section>
@@ -132,14 +122,10 @@
                 <div class="spec-card"><h4>Security</h4><div class="pill-row"><span class="pill green">OS Keychain</span><span class="pill">AES-256-GCM</span><span class="pill">Whitelist Auth</span><span class="pill">JWT Sessions</span></div><p style="margin-top:1rem;font-size:.8rem;color:var(--text-dim)">Keys stay on your device. Bounded agent execution.</p></div>
             </div>
         </section>
-        <section class="cta-section">
-            <h2>Interested in Exagent?</h2>
-            <p>Built for private groups running LLM trading agents.</p>
-            <a href="contact.html" class="btn">Get In Touch</a>
-        </section>
+        <section class="cta-section"><h2>Interested in Exagent?</h2><p>Built for private groups running LLM trading agents.</p><a href="contact.html" class="btn">Get In Touch</a></section>
         <footer>
             <div class="footer-grid">
-                <div class="footer-col"><h4>Products</h4><a href="apex-ai.html">Apex AI</a><a href="exagent.html">Exagent</a></div>
+                <div class="footer-col"><h4>Products</h4><a href="apex-ai.html">Apex AI</a><a href="exagent.html">Exagent</a><a href="agent-consensus.html">Agent Consensus</a></div>
                 <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a></div>
                 <div class="footer-col"><h4>Resources</h4><a href="security.html">Security</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
             </div>
